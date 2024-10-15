@@ -1,0 +1,16 @@
+
+.container{
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Inter;
+}
+
+.app-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+

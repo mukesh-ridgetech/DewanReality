@@ -1,0 +1,652 @@
+
+body{
+  padding: 0%;
+  margin: 0%;
+  overflow-x: hidden;
+}
+
+
+
+.conatainer{
+  max-width: 1400px;
+  display: flex;
+  justify-content: center;
+}
+
+h3{
+  margin: 0%;
+  padding: 0%;
+}
+.heading{
+  color: var(--Labels-Primary, #000);
+
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+
+}
+
+h4{
+  margin: 0%;
+  padding: 0%;
+}
+
+.heading1{
+  color: var(--Labels-Primary, #000);
+
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.header {
+  overflow-x: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 72px;
+  padding-right: 72px;
+   /* border: 1px solid black; */
+   
+  background-color: #F4F5F8;;
+   /* Optional: for border styling like the image */
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+}
+
+.center {
+  flex-grow: 1;
+  text-align: center;
+}
+
+
+
+.right {
+  font-size: 16px;
+  color: #333;
+}
+
+
+
+.navbar {
+  overflow-x: hidden;
+  /* width: 95%; */
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  align-items: center;
+  padding-left: 5%;
+  padding-right: 10%;
+  background-color: #FAFAFA;
+  
+  
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--Drak-Grey, #717171);
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #007bff;
+}
+
+
+
+.background-image {
+  background-image: url('../public/images/bg.png'); /* Replace with your image path */
+  background-size: cover; /* Make the background cover the entire element */
+  background-position: center; /* Center the image */
+  height: 80vh; /* Set height to viewport height or adjust as needed */
+  width: 100%; /* Set width to 100% */
+  color: white; /* Optional: Change text color for better visibility */
+}
+
+
+
+/* Hero Section with Background Image */
+.hero-section {
+  background-image: url('/path-to-image.jpg'); /* Replace with actual image path */
+  background-size: contain;
+  background-position: center;
+  height: 400px;
+  position: relative;
+  
+}
+
+
+.seach-bar{
+  padding-top: 10%;
+  padding-left: 5%;
+  width: 50%;
+}
+
+.seach-bar-heading{
+  display: flex;
+  
+  background: rgba(255, 255, 255, 0.60);
+  margin-left: 3%;
+}
+
+
+
+.text-crouser-conatainer{
+  padding-left: 5px;
+  display: flex;
+  position: relative;
+  /* border: 1px solid black; */
+}
+
+.text-item {
+ 
+  top: 0;
+  position: absolute;
+  padding: 0%;
+  margin: 0%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.text-carousel h2{
+  text-align: center;
+font-family: Inter;
+font-size: 36px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin: 0%;
+padding: 0%;
+color: #0041D9;
+}
+
+.text-item.visible {
+  opacity: 1;
+}
+
+.text-item.hidden {
+  opacity: 0;
+}
+
+
+.seach-bar-heading h1{
+  color: var(--New-black, #191919);
+text-align: center;
+font-family: Inter;
+font-size: 36px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin: 0%;
+padding: 0%;
+}
+
+
+
+/* crouser */
+
+.Crouser{
+/* border: 1px solid black; */
+overflow-x: hidden;
+
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+  margin-top: 20px;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+
+.Crouser-box{
+  width: 90%;
+  margin: auto;
+}
+
+
+.react-multi-carousel-list{
+  overflow: visible !important;
+}
+.Crouser-box-text{
+  width: 88%;
+  margin: auto;
+}
+.Crouser h1{
+  margin: 0%;
+  padding: 0%;
+  color: var(--New-black, #191919);
+font-family: Inter;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 100% */
+}
+
+
+.Crouser h4{
+  color: #535364;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 120% */
+  margin-bottom: 20px;
+}
+
+
+
+
+.product--image {
+  /* position: relative; */
+  width: 100%;
+  height: 16em;
+  object-fit: cover;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: auto 1rem;
+  text-align: left;
+  font-family: arial;
+  padding-bottom: 20px;
+}
+
+.card pre{
+  color: var(--New-black, #191919);
+  padding: 0%;
+  margin: 0%;
+  margin-bottom: 10px;
+  color: var(--New-black, #191919);
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 171.429% */ /* 171.429% *//* 171.429% */
+}
+
+.card h4{
+  margin: 0%;
+  padding: 0%;
+  padding-left: 5px;
+  color: var(--New-black, #191919);
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 171.429% */
+}
+.card p{
+  color: #535364;
+margin: 0%;
+padding: 0%;
+
+padding-left: 5px;
+color: #535364;
+font-family: Inter;
+font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: 16px; /* 160% */
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+
+
+
+
+.carousel-button-group {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  position: absolute; /* Ensure it overlays the carousel */
+  /* Adjust the top position */
+  right: 10px; /* Adjust the right position */
+  z-index: 10; /* Ensure it appears above the carousel */
+}
+
+.carousel-button-group button {
+
+  width: 50px;
+  height: 50px;
+   /* Change button background color */
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  margin-left: 5px; /* Space between buttons */
+  cursor: pointer;
+  
+  border-radius: 50%;
+}
+
+.carousel-button-group button.disable {
+   /* Gray color for disabled button */
+  cursor: not-allowed; /* Not-allowed cursor */
+}
+
+.carousel-button-group button:hover:not(.disable) {
+   /* Darker blue on hover */
+}
+
+
+
+/* Roadmap section */
+
+.Raodmap-conatiner-main{
+  width: 100%;
+  overflow-x: hidden;
+  
+}
+
+.Raodmap-conatiner{
+ 
+  /* border: 1px solid black; */
+   width: 85%;
+   margin: auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: row;
+   gap: 24px;
+}
+
+
+.Raodmap-conatiner-left{
+  padding-left: 20px;
+  width: 570px;
+  height: 442px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  padding-top: 5%;
+  
+  gap: 24px;
+  background: #F7F8FE;
+  z-index: 20;
+}
+
+
+.Roadmap-image-text{
+   /* position: absolute; */
+}
+
+
+
+.Roadmap-image {
+  width: 90%;
+}
+
+.Roadmap-image img {
+  /* width: 100%; */
+  height: 325px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.Raodmap-conatiner-left h1{
+  color: #181A20;
+
+font-family: Inter;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: 36px; 
+}
+
+
+.Raodmap-conatiner-left h4{
+  color: #181A20;
+
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 28.5px; 
+}
+
+.Raodmap-conatiner-left button{
+  display:  flex;
+  justify-content: center;
+  align-items:  center;
+  margin-top: 20px;
+  width:250px;
+  height: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+ border-radius: 12px;
+  border: 1px solid  #0041D9;
+  color: var(--New-black, #191919);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28.8px; /* 144% */
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background-color: transparent;
+}
+
+
+.Raodmap-conatiner-right{
+  width: 600px;
+   display: flex;
+   gap: 24px;
+   flex-direction: column;
+   padding: 15px;
+}
+
+
+.Raodmap-conatiner-right-top{
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+}
+
+.Raodmap-conatiner-right-top-item{
+  width:270px ;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+border: 1px solid #E9E9E9;
+position: relative;
+padding-top: 5%;
+
+padding-left: 3%;
+background: #FFF;
+}
+
+.Raodmap-conatiner-right-top-item h3{
+  
+  margin-bottom: 20px;
+  color:  #0041D9;
+font-family: Inter;
+font-size: 28px;
+font-style: normal;
+font-weight: 600;
+line-height: 42px; /* 150% */
+}
+
+.Raodmap-conatiner-right-top-item h4{
+  
+  padding: 0%;
+  color: #181A20;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 24px; /* 150% */
+}
+
+.Raodmap-conatiner-right-top-item p{
+  color: #717171;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 21px; /* 150% */
+}
+
+
+.styled-input::placeholder{
+  color: var(--new-gray, #B1B1B1);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px;
+}
+
+
+@media (max-width: 768px) {
+
+  .Raodmap-conatiner{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Raodmap-conatiner-left{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  }
+
+  .Raodmap-conatiner-right{
+     width: 90%;
+     display: flex;
+     flex-direction: column;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Custom styling for carousel component */
+
+.testinomaial-container-main{
+  width: 95%;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+ margin: auto;
+  
+}
+.slick-prev,
+.slick-next {
+  z-index: 1;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #000;
+  font-size: 20px;
+}
+
+.slick-dots li button:before {
+  color: #000;
+}
+
+.slick-slide > div {
+  padding: 10px;
+}
+
+
+.Testinomails-container p{
+  margin: 0%;
+  padding: 0%;
+  color: #7D7570;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 130%; /* 20.8px */
+}
+
+.Testinomails-container h4{
+  color: #2B1B12;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.Testinomails-container h5{
+  margin: 0%;
+  padding: 0%;
+  color: #2B1B12;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}

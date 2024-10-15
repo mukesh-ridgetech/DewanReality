@@ -1,0 +1,42 @@
+
+
+
+.Marque {
+   overflow-x: hidden;
+    text-align: center;
+    overflow-y: hidden;
+    height: 200px;
+    margin-top: 24px;
+    
+  }
+
+
+  .Marque-Image-container{
+    background: rgba(0, 65, 217, 0.02);
+  }
+  
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .title h1{
+    margin: 0%;
+    padding: 0%;
+    color: #181A20;
+font-family: Inter;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: 36px; /* 112.5% */
+  }
+  
+  .image_wrapper {
+    margin: 20px 30px;
+    height: 120px;
+  }
+  
+  .image_wrapper img {
+    width: 80%;
+    height: 100%;
+    object-fit: contain;
+  }

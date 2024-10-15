@@ -1,0 +1,362 @@
+/* Container styles */
+
+.body{
+    font-family: Inter;
+    overflow-y: hidden;
+}
+
+
+.search-bar{
+    display: flex;
+    overflow-y: hidden;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-width: 100%;
+    width: 100%;
+    padding-left: 3%;
+}
+
+
+.search-bar-container {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    max-width: 100%;
+    width: 70%;
+  }
+  
+  /* Input field and search icon button */
+  .search-input {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  
+  .search-input input {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .search-icon-btn {
+    position: absolute;
+    right: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0 10px;
+    font-size: 18px;
+    color: #555;
+  }
+  
+  /* Dropdown styles */
+  .dropdown {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    margin-right: 10px;
+  }
+  
+  /* Save Search button */
+  .save-search-btn {
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .save-search-btn:hover {
+    background-color: #004494;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .search-bar-container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .search-input,
+    .dropdown,
+    .save-search-btn {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .search-input input {
+      font-size: 14px;
+      padding: 8px 30px 8px 8px;
+    }
+  
+    .dropdown, .save-search-btn {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+  
+
+
+
+  /* card propertis */
+
+/* Main container for each property card */
+
+.property-list-wrapper-heading{
+  padding-left: 5%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.property-list-wrapper-heading h1{
+  color: var(--New-black, #191919);
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  margin: 0%;
+  padding: 0%;
+  line-height: 26px; /* 108.333% */
+}
+
+.property-list-wrapper-heading h5{
+  color: var(--New-black, #191919);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 21px; /* 131.25% */
+margin: 0%;
+padding: 0%;
+}
+
+.property-card {
+    width: 710px; /* Two cards per row */
+    margin-bottom: 20px; /* Space between rows */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow-y: hidden; /* Ensure content doesn't overflow the card */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  
+  /* Image container for the image scroll */
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 177px; /* Height for the image area */
+    overflow: hidden; /* Hide overflow for clean scroll */
+  }
+  
+  .property-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+  }
+  
+  /* Left and right arrows for image scrolling */
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    z-index: 1; /* Ensure arrows are above the image */
+  }
+  
+  .left-arrow {
+    left: 10px;
+  }
+  
+  .right-arrow {
+    right: 10px;
+  }
+  
+  /* Property details section */
+  .property-details {
+    padding: 10px 15px;
+    text-align: left;
+  }
+  
+  .property-details h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .property-details p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  #heading{
+    color: #191919;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 133.333% */
+  }
+
+  #para1{
+    color: #191919;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 150% */
+  }
+
+  #para2{
+    color: #191919;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 150% */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .property-card {
+      width: 100%; /* Make each card take full width on mobile */
+    }
+  
+    .image-container {
+      height: 150px; /* Reduce height for mobile */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .property-details h3 {
+      font-size: 18px; /* Smaller font for title on smaller screens */
+    }
+  
+    .property-details p {
+      font-size: 12px; /* Adjust details font size for smaller screens */
+    }
+  
+    .arrow {
+      font-size: 16px; /* Adjust arrow size for smaller screens */
+      padding: 4px;
+    }
+  }
+  
+
+
+  /* propertis list */
+  .property-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 600px; /* Adjust based on your need */
+  overflow-y: scroll;
+  padding-left: 5%;
+  gap :8px;
+}
+
+.property-list-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .property-card {
+    width: 100%; /* Full width on smaller screens */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .property-card {
+    width: 48%; /* Two columns on medium screens */
+  }
+}
+
+@media (min-width: 1201px) {
+  .property-card {
+    width: 49%; /* Two columns on large screens */
+  }
+}
+
+
+
+
+/* menu */
+/* Main container for the layout */
+.app-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    height: 80vh; /* Full height of the viewport */
+  }
+  
+  /* .map-container {
+    flex: 1; 
+    height: 100%;
+  } */
+  
+  .property-list-wrapper {
+    flex: 1; /* Right side for property list */
+    overflow-y: hidden; /* Enable vertical scroll */
+    max-height: 100vh; /* Ensure it fits within the viewport */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+
+
+  @media (max-width: 768px) {
+    .app-container {
+        padding-left: 20px;
+        padding-right: 20px;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 80vh; /* Full height of the viewport */
+      }
+  }
+  
+
+
+
+  /* image gallery */
+
+  .image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg{
+    height: 40px !important;
+    width: 40px !important;
+    border-radius: 50% !important;
+    background-color: red !important;
+  }
+
+  element.style{
+    width: 100% !important;
+    height: 100% !important;
+  }
