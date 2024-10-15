@@ -1,6 +1,6 @@
 import React from "react";
-import Builder1 from "../../../public/images/B1-1.png";
-import Builder2 from "../../../public/images/B2-2.png";
+import Builder1 from "../../../public/images/b1-1.png";
+import Builder2 from "../../../public/images/b2-2.png";
 const ImageSection = () => {
   return (
     <>
