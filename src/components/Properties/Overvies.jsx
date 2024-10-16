@@ -10,7 +10,104 @@ const Overvies = () => {
         </div>
 
         <div className="overvier-main-container-bottom">
+
+          
           <div className="overvier-main-container-bottom-main-box">
+
+
+
+
+            <div className="overvier-main-container-bottom-main-box-item">
+              <div className="overvier-main-container-bottom-main-box-item-image">
+                <div>
+                  <img src={over} alt="" style={{ height: "40px" }} />
+                </div>
+                <div>
+                  <h1>Age of Building</h1>
+                </div>
+              </div>
+              <div className="overvier-main-container-bottom-main-box-item-text">
+                <h1>5-10 years</h1>
+              </div>
+            </div>
+
+
+
+            <div className="overvier-main-container-bottom-main-box-item">
+              <div className="overvier-main-container-bottom-main-box-item-image">
+                <div>
+                  <img src={over} alt="" style={{ height: "40px" }} />
+                </div>
+                <div>
+                  <h1>Age of Building</h1>
+                </div>
+              </div>
+              <div className="overvier-main-container-bottom-main-box-item-text">
+                <h1>5-10 years</h1>
+              </div>
+            </div>
+
+
+            <div className="overvier-main-container-bottom-main-box-item">
+              <div className="overvier-main-container-bottom-main-box-item-image">
+                <div>
+                  <img src={over} alt="" style={{ height: "40px" }} />
+                </div>
+                <div>
+                  <h1>Age of Building</h1>
+                </div>
+              </div>
+              <div className="overvier-main-container-bottom-main-box-item-text">
+                <h1>5-10 years</h1>
+              </div>
+            </div>
+
+
+            <div className="overvier-main-container-bottom-main-box-item">
+              <div className="overvier-main-container-bottom-main-box-item-image">
+                <div>
+                  <img src={over} alt="" style={{ height: "40px" }} />
+                </div>
+                <div>
+                  <h1>Age of Building</h1>
+                </div>
+              </div>
+              <div className="overvier-main-container-bottom-main-box-item-text">
+                <h1>5-10 years</h1>
+              </div>
+            </div>
+
+
+            <div className="overvier-main-container-bottom-main-box-item">
+              <div className="overvier-main-container-bottom-main-box-item-image">
+                <div>
+                  <img src={over} alt="" style={{ height: "40px" }} />
+                </div>
+                <div>
+                  <h1>Age of Building</h1>
+                </div>
+              </div>
+              <div className="overvier-main-container-bottom-main-box-item-text">
+                <h1>5-10 years</h1>
+              </div>
+            </div>
+
+
+            <div className="overvier-main-container-bottom-main-box-item">
+              <div className="overvier-main-container-bottom-main-box-item-image">
+                <div>
+                  <img src={over} alt="" style={{ height: "40px" }} />
+                </div>
+                <div>
+                  <h1>Age of Building</h1>
+                </div>
+              </div>
+              <div className="overvier-main-container-bottom-main-box-item-text">
+                <h1>5-10 years</h1>
+              </div>
+            </div>
+
+
             <div className="overvier-main-container-bottom-main-box-item">
               <div className="overvier-main-container-bottom-main-box-item-image">
                 <div>
@@ -38,133 +135,25 @@ const Overvies = () => {
                 <h1>5-10 years</h1>
               </div>
             </div>
+
+
+
+
+
           </div>
 
 
 
-          <div className="overvier-main-container-bottom-main-box">
-            <div className="overvier-main-container-bottom-main-box-item">
-              <div className="overvier-main-container-bottom-main-box-item-image">
-                <div>
-                  <img src={over} alt="" style={{ height: "40px" }} />
-                </div>
-                <div>
-                  <h1>Age of Building</h1>
-                </div>
-              </div>
-              <div className="overvier-main-container-bottom-main-box-item-text">
-                <h1>5-10 years</h1>
-              </div>
-            </div>
-
-            <div className="overvier-main-container-bottom-main-box-item">
-              <div className="overvier-main-container-bottom-main-box-item-image">
-                <div>
-                  <img src={over} alt="" style={{ height: "40px" }} />
-                </div>
-                <div>
-                  <h1>Age of Building</h1>
-                </div>
-              </div>
-              <div className="overvier-main-container-bottom-main-box-item-text">
-                <h1>5-10 years</h1>
-              </div>
-            </div>
-          </div>
+        
 
 
 
-          <div className="overvier-main-container-bottom-main-box">
-            <div className="overvier-main-container-bottom-main-box-item">
-              <div className="overvier-main-container-bottom-main-box-item-image">
-                <div>
-                  <img src={over} alt="" style={{ height: "40px" }} />
-                </div>
-                <div>
-                  <h1>Age of Building</h1>
-                </div>
-              </div>
-              <div className="overvier-main-container-bottom-main-box-item-text">
-                <h1>5-10 years</h1>
-              </div>
-            </div>
-
-            <div className="overvier-main-container-bottom-main-box-item">
-              <div className="overvier-main-container-bottom-main-box-item-image">
-                <div>
-                  <img src={over} alt="" style={{ height: "40px" }} />
-                </div>
-                <div>
-                  <h1>Age of Building</h1>
-                </div>
-              </div>
-              <div className="overvier-main-container-bottom-main-box-item-text">
-                <h1>5-10 years</h1>
-              </div>
-            </div>
-          </div>
+          
 
 
-          <div className="overvier-main-container-bottom-main-box">
-            <div className="overvier-main-container-bottom-main-box-item">
-              <div className="overvier-main-container-bottom-main-box-item-image">
-                <div>
-                  <img src={over} alt="" style={{ height: "40px" }} />
-                </div>
-                <div>
-                  <h1>Age of Building</h1>
-                </div>
-              </div>
-              <div className="overvier-main-container-bottom-main-box-item-text">
-                <h1>5-10 years</h1>
-              </div>
-            </div>
-
-            <div className="overvier-main-container-bottom-main-box-item">
-              <div className="overvier-main-container-bottom-main-box-item-image">
-                <div>
-                  <img src={over} alt="" style={{ height: "40px" }} />
-                </div>
-                <div>
-                  <h1>Age of Building</h1>
-                </div>
-              </div>
-              <div className="overvier-main-container-bottom-main-box-item-text">
-                <h1>5-10 years</h1>
-              </div>
-            </div>
-          </div>
 
 
-          <div className="overvier-main-container-bottom-main-box">
-            <div className="overvier-main-container-bottom-main-box-item">
-              <div className="overvier-main-container-bottom-main-box-item-image">
-                <div>
-                  <img src={over} alt="" style={{ height: "40px" }} />
-                </div>
-                <div>
-                  <h1>Age of Building</h1>
-                </div>
-              </div>
-              <div className="overvier-main-container-bottom-main-box-item-text">
-                <h1>5-10 years</h1>
-              </div>
-            </div>
-
-            <div className="overvier-main-container-bottom-main-box-item">
-              <div className="overvier-main-container-bottom-main-box-item-image">
-                <div>
-                  <img src={over} alt="" style={{ height: "40px" }} />
-                </div>
-                <div>
-                  <h1>Age of Building</h1>
-                </div>
-              </div>
-              <div className="overvier-main-container-bottom-main-box-item-text">
-                <h1>5-10 years</h1>
-              </div>
-            </div>
-          </div>
+          
         </div>
         {/* <div className="overvier-main-container-bottom-box">
           <div className="overvier-main-container-bottom-box-main">

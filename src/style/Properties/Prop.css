@@ -187,6 +187,22 @@ a {
 }
 
 
+@media(max-width:750px){
+    .Buider-icon-container-left h1{
+        font-size: 20px;
+    }
+
+    .Buider-icon-container-left h5{
+        font-size: 10px;
+    }
+
+    
+.Buider-icon-container-right img {
+    width: 70%;
+    object-fit: contain;
+}
+}
+
 
 /* Image container */
 
@@ -489,7 +505,7 @@ a {
 .Header-main-section-container-left {
     display: flex;
     flex-direction: column;
-    width: 914px;
+    width: 70%;
     order: 1;
     /* border: 1px solid black; */
 }
@@ -501,7 +517,7 @@ a {
     position: sticky; 
     top: 10;
     display: flex;
-width: 380px;
+width: 30%;
 height: 214px;
 padding: 7px 23px;
 flex-direction: column;
@@ -552,7 +568,9 @@ order: 2;
     text-transform: uppercase;
 }
 
+
 .Header-main-section-container-right-button-2{
+    border: 1px solid red;
     display: flex;
 padding: 15px 22px;
 flex-direction: column;
@@ -560,7 +578,7 @@ align-items: flex-start;
 gap: 10px;
 border-radius: 12px;
 border: 1px solid var(--DR, #0041D9);
-   
+
 }
 
 .Header-main-section-container-right-button-2 button{
@@ -578,7 +596,40 @@ background-color: transparent;
 }
 
 
+
+@media(max-width:1250px){
+    .Header-main-section-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Header-main-section-container-left{
+        order: 2;
+        width: 95%;
+    }
+
+    .Header-main-section-container-right{
+        order: 1;
+        width: 50%;
+        height: 300px;
+    }
+}
+
+
+
+@media (max-width:600px){
+    .Header-main-section-container-right{
+        order: 1;
+        width: 80%;
+        height: 300px;
+    }
+}
 /* overvier section */
+
+
+
+
+/* this is past css */
 
 .overvier-main-container{
     overflow-x: hidden;
@@ -592,25 +643,30 @@ background-color: transparent;
 
 
 .overvier-main-container-bottom{
+    /* border: 1px solid black; */
     display: flex;
-    width: 100%;
+    width: 98%;
     display: flex;
-    flex-direction: column;
-    gap: 40px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10%;
     /* border: 1px solid black; */
 }
 
 
 .overvier-main-container-bottom-main-box{
+    /* border: 1px solid black; */
+    width: 100%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 40px;
 }
 
 .overvier-main-container-bottom-main-box-item{
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 47%;
     justify-content: space-around;
     align-items: center;
     /* border: 1px solid black; */
@@ -646,12 +702,14 @@ padding: 0%;
 }
 
 
-
-@media (max-width: 768px) {
-    .overvier-main-container-bottom-main-box{
-        flex-direction: column;
+@media(max-width:750px){
+    .overvier-main-container-bottom-main-box-item{
+        width: 100%;
     }
 }
+
+
+
 
 
 
@@ -809,6 +867,22 @@ font-weight: 400;
 line-height: normal;
   }
   
+
+  @media (max-width:750px){
+    .amenities-grid {
+        width: 100%;
+        display: flex; 
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+      }
+      
+      .amenity-item {
+          width: 25%;
+      }
+
+  }
 
   .map-container{
     margin-top: 40px;
@@ -993,28 +1067,37 @@ line-height: 21px; /* 105% */
 }
 
 
- @media(max-width:1200px){
-    .Header-main-section-container{
+@media (max-width:750px){
+      
+    .floor-container{
+        margin-top: 30px;
+        width: 100%;
         display: flex;
         flex-direction: column;
-    }
-
-
-    .Header-main-section-container-left {
-        display: flex;
-        flex-direction: column;
-        width: 914px;
-        order: 2;
+        justify-content: center;
+        align-items: center;
+        gap: 46px;
         /* border: 1px solid black; */
     }
     
-    
-    
-    
-    .Header-main-section-container-right {
-           order: 1;
+    .floor-container-left{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: 362px;
     }
- }
+    
+
+    .floor-container-right{
+        /* border: 1px solid black; */
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+ 
 
 
   /* color: var(--tundora, #464646);
