@@ -1,8 +1,9 @@
 /* Container for the two divs */
 .newsletter-container {
+  width: 80%;
     display: flex;
     overflow-x: hidden;
-    padding-left: 10%;
+    margin: auto;
     font-family: Arial, sans-serif;
     gap:79px;
     margin-top: 30px;
@@ -88,7 +89,7 @@ line-height: normal;
   }
   /* Right Div Styling */
   .newsletter-right {
-    width: 60%;
+    width: 70%;
     order: 2;
   }
   

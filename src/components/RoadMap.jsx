@@ -3,7 +3,9 @@ import HumanImg from "../../public/images/SVG.png";
 const RoadMap = () => {
   return (
     <>
-      <div className="Raodmap-conatiner-main">
+
+    <div className="container">
+    <div className="Raodmap-conatiner-main">
         <div className="Raodmap-conatiner">
           <div className="Raodmap-conatiner-left">
             <div className="Roadmap-image-text">
@@ -221,6 +223,8 @@ const RoadMap = () => {
           </div>
         </div>
       </div>
+    </div>
+      
     </>
   );
 };

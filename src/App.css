@@ -275,6 +275,7 @@ padding: 0%;
 overflow-x: hidden;
 
  width: 100%;
+ margin: auto;
  display: flex;
  flex-direction: column;
   margin-top: 20px;
@@ -535,15 +536,16 @@ line-height: 24px; /* 171.429% */
 /* Roadmap section */
 
 .Raodmap-conatiner-main{
-  width: 100%;
+  width: 90%;
   overflow-x: hidden;
+  margin: auto;
   
 }
 
 .Raodmap-conatiner{
  
   /* border: 1px solid black; */
-   width: 85%;
+   width: 100%;
    margin: auto;
    display: flex;
    justify-content: center;
@@ -788,7 +790,7 @@ line-height: 24px;
 
 .testinomaial-container-main{
   overflow-x: hidden;
-  width: 95%;
+  width: 90%;
   /* display: flex;
   align-items: center;
   justify-content: center; */
