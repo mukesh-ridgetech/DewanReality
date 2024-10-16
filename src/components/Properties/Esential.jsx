@@ -14,7 +14,7 @@ const Esential = () => {
 
   return (
     <div>
-      <Tabs defaultActiveKey="1" style={{backgroundColor:"#F8F8F8",padding:"10px"}}>
+      <Tabs defaultActiveKey="1" style={{backgroundColor:"#F8F8F8",padding:"10px"}} id='Essential'>
         {/* Tab 1: Transit */}
         <TabPane tab="Transit" key="1">
           <Collapse accordion activeKey={activeKey} onChange={handleCollapseChange} style={{border:"none"}}>

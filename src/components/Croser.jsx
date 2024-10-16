@@ -28,12 +28,12 @@ const Croser = () => {
     return (
       <div
         className="carousel-button-group"
-        style={{
-          position: "absolute",
-          right: "0%",
-          top: "5%",
-          transform: "translate(-50%, -50%)",
-        }}
+        // style={{
+        //   position: "absolute",
+        //   right: "0%",
+        //   top: "8%",
+        //   transform: "translate(-50%, -50%)",
+        // }}
       >
         <button
           className={currentSlide === 0 ? "disable" : ""}

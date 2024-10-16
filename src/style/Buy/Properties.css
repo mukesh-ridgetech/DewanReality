@@ -14,3 +14,10 @@
 }
 
 
+@media(max-width:750px){
+    .app-container{
+        height: auto;
+    }
+}
+
+

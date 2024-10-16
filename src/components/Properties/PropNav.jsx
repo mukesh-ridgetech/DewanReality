@@ -19,7 +19,7 @@ const Navbar = () => {
       </div>
 
       <div className="center1">
-        <img src={logo} alt="Diwan Realty Logo" className="logo" style={{width:"130px"}} />
+        <img src={logo} alt="Diwan Realty Logo" className="logo"  />
       </div>
 
       <div className="nav-right1">

@@ -247,6 +247,7 @@ line-height: 24px; /* 150% */
   @media (max-width: 768px) {
     .property-card {
       width: 100%; /* Make each card take full width on mobile */
+      height: auto;
     }
   
     .image-container {
@@ -323,6 +324,15 @@ line-height: 24px; /* 150% */
     flex: 1; 
     height: 100%;
   } */
+
+  #map-container{
+    overflow-x: hidden;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+  }
   
   .property-list-wrapper {
     flex: 1; /* Right side for property list */
@@ -335,12 +345,24 @@ line-height: 24px; /* 150% */
 
   @media (max-width: 768px) {
     .app-container {
-        padding-left: 20px;
+        padding-left: 0px;
         padding-right: 20px;
         overflow-x: hidden;
         display: flex;
         flex-direction: column;
-        height: 80vh; /* Full height of the viewport */
+        height: auto; /* Full height of the viewport */
+      }
+
+      .property-list-wrapper {
+        flex: 1;
+        overflow-y: scroll; 
+        height: auto;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .property-list-container{
+        height: auto;
+        overflow-y: scroll;
       }
   }
   

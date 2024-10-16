@@ -19,7 +19,7 @@ const Header = () => {
         <span role="img" aria-label="location"></span> <h3 className='heading' >Gurugram</h3>
       </div>
       <div className="center">
-        <img src={logo} alt="Diwan Realty Logo" className="logo" style={{width:"130px"}} />
+        <img src={logo} alt="Diwan Realty Logo" className="logo"  />
       </div>
       <div className="right">
         <h4 className='heading1'>+91 9811773700</h4>

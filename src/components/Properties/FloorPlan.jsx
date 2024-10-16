@@ -3,7 +3,7 @@ import floor from '../../../public/images/floor.png'
 const FloorPlan = () => {
   return (
     <>
-           <div className='floor-container'>
+           <div className='floor-container' id='FloorPlan'>
                     <div className='floor-container-left'>
                          <img src={floor} alt="" />
                     </div>

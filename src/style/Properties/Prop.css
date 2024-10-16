@@ -32,6 +32,10 @@
     background-color: #FAFAFA;
 }
 
+.logo{
+    width: 130px;
+  }
+
 .nav-left1,
 .nav-right1 {
     display: flex;
@@ -58,6 +62,70 @@ a {
     color: white;
 }
 
+
+
+@media(max-width:750px){
+
+    .container1{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .nav-left1,
+.nav-right1 {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-left1 a{
+    font-size: 15px;
+}
+
+
+.nav-right1 a{
+    font-size: 15px;
+}
+
+.logo{
+    width: 80px;
+  }
+}
+
+
+@media(max-width:600px){
+
+
+    .container1{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .navbar1{
+        width: 100%;
+    }
+    .nav-left1,
+.nav-right1 {
+    display: flex;
+    gap: 5px;
+}
+
+.nav-left1 a{
+    font-size: 10px;
+}
+
+
+.nav-right1 a{
+    font-size: 10px;
+}
+
+.logo{
+    width: 80px;
+  }
+
+
+
+
+
+}
 
 
 /* builder section */
@@ -167,16 +235,17 @@ a {
 .Image-container-right {
     width: 100%;
     display: flex;
-
+    flex-wrap: wrap;
     flex-direction: row;
     gap: 8px;
 
 }
 
 .Image-container-right-item {
-    width: 50%;
+    width: 49%;
     height: 250px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -217,7 +286,84 @@ a {
     /* 150% */
 }
 
+@media(max-width:950px){
+    .Image-container{
+        display: flex;
+        flex-direction: column;
+    }
 
+    .Image-container-left{
+         width: 100%;
+    }
+
+    .Image-container-right-main{
+        width: 100%;
+    }
+}
+
+
+@media(max-width:750px){
+    .Image-container{
+        display: flex;
+        flex-direction: column;
+        padding: 1%;
+    }
+
+    .Image-container-left{
+         width: 100%;
+    }
+
+    .Image-container-right-main{
+        width: 100%;
+    }
+
+
+
+    
+.Image-footer-container {
+    display: flex;
+    gap: 5px;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+
+.Image-footer-container-text {
+    border-radius: 4px;
+    border: 1px solid #A7A6AB;
+    background: #FFF;
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+}
+
+.Image-footer-container-text h1 {
+    margin: 0%;
+    padding: 0%;
+    color: var(--Drak-Grey, #717171);
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    /* 150% */
+}
+
+}
+
+
+@media(max-width:750px){
+    .Image-container-right-main{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .Image-container-right-item{
+        width: 98%;
+    }
+}
 /* proties header  */
 
 
@@ -293,6 +439,40 @@ a {
 }
 
 
+@media (max-width:750px){
+      
+    .proHeader-container-item a {
+        text-decoration: none;
+        color: var(--Drak-Grey, #717171);
+        text-align: center;
+        font-family: Inter;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        padding: 5px;
+        border-radius: 2px;
+        line-height: normal;
+        transition: color 0.3s;
+    }
+}
+
+@media (max-width:600px){
+      
+    .proHeader-container-item a {
+        text-decoration: none;
+        color: var(--Drak-Grey, #717171);
+        text-align: center;
+        font-family: Inter;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        padding: 5px;
+        border-radius: 2px;
+        line-height: normal;
+        transition: color 0.3s;
+    }
+}
+
 /* header-main-sectin */
 
 .Header-main-section-container {
@@ -310,6 +490,7 @@ a {
     display: flex;
     flex-direction: column;
     width: 914px;
+    order: 1;
     /* border: 1px solid black; */
 }
 
@@ -329,6 +510,8 @@ gap: 14px;
 flex-shrink: 0;
 border-radius: 20px;
 border: 1px solid var(--new-gray, #B1B1B1);
+
+order: 2;
 }
 
 .Header-main-section-container-right-image {
@@ -809,6 +992,29 @@ font-weight: 600;
 line-height: 21px; /* 105% */
 }
 
+
+ @media(max-width:1200px){
+    .Header-main-section-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .Header-main-section-container-left {
+        display: flex;
+        flex-direction: column;
+        width: 914px;
+        order: 2;
+        /* border: 1px solid black; */
+    }
+    
+    
+    
+    
+    .Header-main-section-container-right {
+           order: 1;
+    }
+ }
 
 
   /* color: var(--tundora, #464646);

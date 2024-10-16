@@ -2,10 +2,12 @@
 .contact-container {
     display: flex;
     justify-content: space-between;
+    padding-top: 30px;
     padding: 50px;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
     background: #FCFCFC;
+    overflow-x: hidden;
   }
   
   /* Left Div Styling */

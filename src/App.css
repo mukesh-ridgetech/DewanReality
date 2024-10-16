@@ -11,6 +11,7 @@ body{
   max-width: 1400px;
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 h3{
@@ -71,11 +72,39 @@ line-height: normal;
 }
 
 
+.logo{
+  width: 130px;
+}
+
 
 .right {
   font-size: 16px;
   color: #333;
 }
+
+
+
+@media (max-width: 768px) {
+  .header{
+    padding-left: 20px;
+  padding-right: 20px;
+  }
+
+  .heading1{
+    font-size: 15px;
+  }
+
+  .heading{
+    font-size: 15px;
+  }
+
+  .logo{
+    width: 80px;
+  }
+  
+
+}
+
 
 
 
@@ -117,7 +146,39 @@ a:hover {
 
 
 
+@media (max-width: 768px) {
+  .navbar{
+    padding-left: 1%;
+  padding-right: 1%;
+  /* background-color: red; */
+  }
+
+  .nav-left, .nav-right {
+    display: flex;
+    gap: 5px;
+  }
+
+  .nav-left, .nav-right a {
+    font-size: 15px;
+  }
+
+  .nav-left a {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .nav-left, .nav-right a {
+    font-size: 10px;
+  }
+
+  .nav-left a {
+    font-size: 10px;
+  }
+}
+
 .background-image {
+  overflow-x: hidden;
   background-image: url('../public/images/bg.png'); /* Replace with your image path */
   background-size: cover; /* Make the background cover the entire element */
   background-position: center; /* Center the image */
@@ -155,6 +216,7 @@ a:hover {
 
 
 .text-crouser-conatainer{
+  overflow-x: hidden;
   padding-left: 5px;
   display: flex;
   position: relative;
@@ -260,6 +322,7 @@ line-height: 24px; /* 100% */
 
 
 .product--image {
+  overflow-x: hidden;
   /* position: relative; */
   width: 100%;
   height: 16em;
@@ -267,6 +330,7 @@ line-height: 24px; /* 100% */
 }
 
 .card {
+  overflow-x: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 400px;
   margin: auto 1rem;
@@ -335,7 +399,59 @@ line-height: 16px; /* 160% */
 }
 
 
+.Product-continer{
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
 
+.Product-continer-main{
+  overflow-x: hidden;
+  width: 300px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  /* border: 1px solid red; */
+  padding: 10px;
+  border-radius: 12px;
+background: #FFF;
+box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
+}
+
+.Product-continer-main-inage{
+  width: 100%;
+  /* border: 1px solid yellow; */
+  
+
+}
+
+.Product-continer-main-text pre{
+  color: var(--New-black, #191919);
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 171.429% */
+}
+
+.Product-continer-main-text p{
+  color: var(--New-black, #191919);
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 171.429% */
+}
+
+
+
+/* style={{
+  position: "absolute",
+  right: "0%",
+  top: "8%",
+  transform: "translate(-50%, -50%)",
+}} */
 
 
 .carousel-button-group {
@@ -343,8 +459,14 @@ line-height: 16px; /* 160% */
   justify-content: flex-end; /* Align items to the right */
   position: absolute; /* Ensure it overlays the carousel */
   /* Adjust the top position */
-  right: 10px; /* Adjust the right position */
+  right: 20px; /* Adjust the right position */
+  top: 5px;
   z-index: 10; /* Ensure it appears above the carousel */
+
+  /* position: absolute;
+  right: 3%;
+  top: 4%; */
+  transform: translate(-50%, -50%),
 }
 
 .carousel-button-group button {
@@ -371,6 +493,43 @@ line-height: 16px; /* 160% */
    /* Darker blue on hover */
 }
 
+
+@media (max-width: 700px) {
+  .Crouser h1{
+    font-size: 20px;
+  }
+
+  .Crouser h4{
+    font-size: 15px;
+  }
+  .carousel-button-group{
+    position: absolute;
+    right: 0%;
+    top: 12%;
+    transform: translate(-50%, -50%),
+  }
+  .carousel-button-group button{
+    position: relative;
+    width: 40px;
+  height: 40px;
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  .carousel-button-group{
+    position: absolute;
+    right: 0%;
+    top: 13%;
+    transform: translate(-50%, -50%),
+  }
+  .carousel-button-group button{
+    position: relative;
+    width: 40px;
+  height: 40px;
+  }
+}
 
 
 /* Roadmap section */
@@ -540,6 +699,23 @@ line-height: 24px;
 }
 
 
+@media (max-width: 1200px) {
+
+  .Raodmap-conatiner{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Raodmap-conatiner-left{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  }
+}
+
+
 @media (max-width: 768px) {
 
   .Raodmap-conatiner{
@@ -559,8 +735,26 @@ line-height: 24px;
      width: 90%;
      display: flex;
      flex-direction: column;
+     justify-content: center;
+     align-items: center;
+    
   }
 
+
+
+}
+
+@media (max-width: 600px) {
+
+
+  .Raodmap-conatiner-right-top{
+     width: 95%;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+
+  }
 }
 
 
@@ -593,6 +787,7 @@ line-height: 24px;
 /* Custom styling for carousel component */
 
 .testinomaial-container-main{
+  overflow-x: hidden;
   width: 95%;
   /* display: flex;
   align-items: center;

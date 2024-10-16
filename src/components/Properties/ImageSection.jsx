@@ -18,16 +18,23 @@ const ImageSection = () => {
               <div className="Image-container-right-item">
                 <img src={Builder1} alt="" />
               </div>
+
+              <div className="Image-container-right-item">
+                <img src={Builder2} alt="" />
+              </div>
+              <div className="Image-container-right-item">
+                <img src={Builder1} alt="" />
+              </div>
             </div>
 
-            <div className="Image-container-right">
+            {/* <div className="Image-container-right">
               <div className="Image-container-right-item">
                 <img src={Builder1} alt="" />
               </div>
               <div className="Image-container-right-item">
                 <img src={Builder1} alt="" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
