@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const PropertyCard = ({ property }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
   const navigate = useNavigate()
 
   const handle = ()=>{

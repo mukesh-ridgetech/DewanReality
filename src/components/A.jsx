@@ -123,7 +123,12 @@ const CarouselComponent = () => {
   };
 
   return (
-    <div className="conatainer">
+    <div className="container">
+
+      <div >
+                <div className="testinomial-heading">
+                  <h1>What People Say About Diwan Realty</h1>
+                </div>
       <div
         style={{
           paddingTop: "30px",
@@ -283,6 +288,10 @@ const CarouselComponent = () => {
           </div>
         </div>
       </div>
+      </div>
+
+
+     
     </div>
   );
 };

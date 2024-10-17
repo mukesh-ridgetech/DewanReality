@@ -316,7 +316,7 @@ line-height: 24px; /* 100% */
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 120% */
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
 
 
@@ -401,13 +401,13 @@ line-height: 16px; /* 160% */
 
 
 .Product-continer{
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   display: flex;
   flex-direction: column;
 }
 
 .Product-continer-main{
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   width: 300px;
   margin: auto;
   display: flex;
@@ -631,6 +631,11 @@ line-height: 28.5px;
 }
 
 
+.Raodmap-conatiner-left button:hover{
+  background-color: #0041D9;
+  color: white;
+}
+
 .Raodmap-conatiner-right{
   width: 600px;
    display: flex;
@@ -788,6 +793,29 @@ line-height: 24px;
 
 /* Custom styling for carousel component */
 
+
+.testinomial-heading{
+  overflow-x: hidden;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 30px;
+
+} 
+
+.testinomial-heading h1{
+  color: #2B1B12;
+text-align: center;
+font-family: Inter;
+font-size: 36px;
+font-style: normal;
+font-weight: 700;
+line-height: 140%; /* 50.4px */
+margin: 0%;
+padding: 0%;
+}
 .testinomaial-container-main{
   overflow-x: hidden;
   width: 90%;
@@ -846,4 +874,14 @@ font-size: 16px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
+}
+
+@media (max-width:750px){
+
+  .testinomial-heading{
+    width: 50%;
+  }
+  .testinomial-heading h1{
+    font-size: 25px;
+  }
 }

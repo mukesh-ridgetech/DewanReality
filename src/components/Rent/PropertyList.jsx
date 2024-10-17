@@ -17,7 +17,7 @@ const properties = [
     type: 'House for sale',
     status: 'Apartment',
     address: 'DLF The Camellias, Sector 42, Gurugram',
-    images: [{url:b3}, {url:b2}, {url:b3}] // Replace with actual image URLs
+    images: [{url:b1}, {url:b2}, {url:b3}] // Replace with actual image URLs
   },
 
   
@@ -29,7 +29,7 @@ const properties = [
     type: 'House for sale',
     status: 'Apartment',
     address: 'DLF The Camellias, Sector 42, Gurugram',
-  images: [{url:b3}, {url:b2}, {url:b3}] // Replace with actual image URLs
+  images: [{url:b1}, {url:b2}, {url:b3}] // Replace with actual image URLs
   },
 
   

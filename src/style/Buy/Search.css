@@ -146,7 +146,7 @@ padding: 0%;
 }
 
 .property-card {
-    width: 710px; /* Two cards per row */
+    width: 50%; /* Two cards per row */
     margin-bottom: 20px; /* Space between rows */
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -327,13 +327,17 @@ line-height: 24px; /* 150% */
 
   #map-container{
     overflow-x: hidden;
-    width: 600px;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1%;
   }
   
+
+  #map-container::-webkit-scrollbar {
+    display: none;
+  }
   .property-list-wrapper {
     flex: 1; /* Right side for property list */
     overflow-y: hidden; /* Enable vertical scroll */

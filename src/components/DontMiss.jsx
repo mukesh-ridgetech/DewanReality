@@ -10,7 +10,7 @@ const DontMiss = () => {
       {/* Left Div */}
       <div className="newsletter-left">
 
-        <div>
+        <div className='newsletter-left-text'>
         <h2>Don't Miss Out !!</h2>
         <p>New Homes Are Getting Added All The Time.<br/>Be The First To Know.</p>
         <input type="email" className='newsletter-left-input' placeholder="Enter your e-mail address" />
