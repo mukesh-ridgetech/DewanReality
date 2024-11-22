@@ -1,7 +1,8 @@
 import React from "react";
 import over from "../../../public/images/over.png";
+import { baseUrl } from "../helper/Helper";
 
-const Overvies = () => {
+const Overvies = ({overview}) => {
   return (
     <>
       <div className="overvier-main-container" id="overview">
@@ -16,8 +17,34 @@ const Overvies = () => {
 
 
 
+        {
+          overview?.map((item)=>{
+              
+            return(
 
-            <div className="overvier-main-container-bottom-main-box-item">
+               <>
+                <div className="overvier-main-container-bottom-main-box-item">
+              <div className="overvier-main-container-bottom-main-box-item-image">
+                <div>
+                  <img src={`${baseUrl}${item?.name?.logo}`} alt="" style={{ height: "40px" }} />
+                </div>
+                <div>
+                  <h1>{item?.name?.name}</h1>
+                </div>
+              </div>
+              <div className="overvier-main-container-bottom-main-box-item-text">
+                <h1>{item?.value}</h1>
+              </div>
+            </div>
+               </>
+            )
+          })
+        }
+           
+
+
+
+            {/* <div className="overvier-main-container-bottom-main-box-item">
               <div className="overvier-main-container-bottom-main-box-item-image">
                 <div>
                   <img src={over} alt="" style={{ height: "40px" }} />
@@ -29,11 +56,10 @@ const Overvies = () => {
               <div className="overvier-main-container-bottom-main-box-item-text">
                 <h1>5-10 years</h1>
               </div>
-            </div>
+            </div> */}
 
 
-
-            <div className="overvier-main-container-bottom-main-box-item">
+            {/* <div className="overvier-main-container-bottom-main-box-item">
               <div className="overvier-main-container-bottom-main-box-item-image">
                 <div>
                   <img src={over} alt="" style={{ height: "40px" }} />
@@ -45,10 +71,10 @@ const Overvies = () => {
               <div className="overvier-main-container-bottom-main-box-item-text">
                 <h1>5-10 years</h1>
               </div>
-            </div>
+            </div> */}
 
 
-            <div className="overvier-main-container-bottom-main-box-item">
+            {/* <div className="overvier-main-container-bottom-main-box-item">
               <div className="overvier-main-container-bottom-main-box-item-image">
                 <div>
                   <img src={over} alt="" style={{ height: "40px" }} />
@@ -60,10 +86,10 @@ const Overvies = () => {
               <div className="overvier-main-container-bottom-main-box-item-text">
                 <h1>5-10 years</h1>
               </div>
-            </div>
+            </div> */}
 
 
-            <div className="overvier-main-container-bottom-main-box-item">
+            {/* <div className="overvier-main-container-bottom-main-box-item">
               <div className="overvier-main-container-bottom-main-box-item-image">
                 <div>
                   <img src={over} alt="" style={{ height: "40px" }} />
@@ -75,10 +101,10 @@ const Overvies = () => {
               <div className="overvier-main-container-bottom-main-box-item-text">
                 <h1>5-10 years</h1>
               </div>
-            </div>
+            </div> */}
 
 
-            <div className="overvier-main-container-bottom-main-box-item">
+            {/* <div className="overvier-main-container-bottom-main-box-item">
               <div className="overvier-main-container-bottom-main-box-item-image">
                 <div>
                   <img src={over} alt="" style={{ height: "40px" }} />
@@ -90,10 +116,10 @@ const Overvies = () => {
               <div className="overvier-main-container-bottom-main-box-item-text">
                 <h1>5-10 years</h1>
               </div>
-            </div>
+            </div> */}
 
 
-            <div className="overvier-main-container-bottom-main-box-item">
+            {/* <div className="overvier-main-container-bottom-main-box-item">
               <div className="overvier-main-container-bottom-main-box-item-image">
                 <div>
                   <img src={over} alt="" style={{ height: "40px" }} />
@@ -105,10 +131,9 @@ const Overvies = () => {
               <div className="overvier-main-container-bottom-main-box-item-text">
                 <h1>5-10 years</h1>
               </div>
-            </div>
+            </div> */}
 
-
-            <div className="overvier-main-container-bottom-main-box-item">
+            {/* <div className="overvier-main-container-bottom-main-box-item">
               <div className="overvier-main-container-bottom-main-box-item-image">
                 <div>
                   <img src={over} alt="" style={{ height: "40px" }} />
@@ -120,21 +145,7 @@ const Overvies = () => {
               <div className="overvier-main-container-bottom-main-box-item-text">
                 <h1>5-10 years</h1>
               </div>
-            </div>
-
-            <div className="overvier-main-container-bottom-main-box-item">
-              <div className="overvier-main-container-bottom-main-box-item-image">
-                <div>
-                  <img src={over} alt="" style={{ height: "40px" }} />
-                </div>
-                <div>
-                  <h1>Age of Building</h1>
-                </div>
-              </div>
-              <div className="overvier-main-container-bottom-main-box-item-text">
-                <h1>5-10 years</h1>
-              </div>
-            </div>
+            </div> */}
 
 
 

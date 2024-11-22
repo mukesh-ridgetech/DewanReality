@@ -1,70 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tabs, Collapse } from 'antd';
 import { EnvironmentOutlined } from '@ant-design/icons';
 
 const { TabPane } = Tabs;
 const { Panel } = Collapse;
 
-const Esential = () => {
-  const [activeKey, setActiveKey] = useState('1'); // Manage collapse state
+const Esential = ({ neighbourhood }) => {
+  // Dynamically set the default active tab
+  const [activeTab, setActiveTab] = useState(neighbourhood?.[0]?._id || null);
+  const [activeKey, setActiveKey] = useState(null); // Manage active panel in Collapse
+
+  useEffect(() => {
+    // Reset active tab and panel if neighbourhood data changes
+    if (neighbourhood?.length) {
+      setActiveTab(neighbourhood[0]._id); // Set the first tab as default
+      const firstTransition = neighbourhood[0]?.Transition?.[0];
+      setActiveKey(firstTransition?.TypeOfType || null); // Set first panel as default
+    }
+  }, [neighbourhood]);
+
+  const handleTabChange = (key) => {
+    setActiveTab(key); // Change active tab
+    const selectedTab = neighbourhood.find((item) => item._id === key);
+    const firstTransition = selectedTab?.Transition?.[0];
+    setActiveKey(firstTransition?.TypeOfType || null); // Set first panel of new tab as default
+  };
 
   const handleCollapseChange = (key) => {
-    setActiveKey(key); // Accordion behavior, only one can be open
+    setActiveKey(key); // Accordion behavior for Collapse
   };
 
   return (
     <div>
-      <Tabs defaultActiveKey="1" style={{backgroundColor:"#F8F8F8",padding:"10px"}} id='Essential'>
-        {/* Tab 1: Transit */}
-        <TabPane tab="Transit" key="1">
-          <Collapse accordion activeKey={activeKey} onChange={handleCollapseChange} style={{border:"none"}}>
-            <Panel header={<span><EnvironmentOutlined /> Bus Stations</span>} key="1" style={{backgroundColor:"white",border:"none",marginBottom:"10px"}}>
-              <ul className='Eseential-container'>
-                <li className='Essential-text'>Paras Hospital <span style={{ float: 'right' }}>0.3 km | 3 mins</span></li>
-                <li>Genpact Sector 43 & 40 <span style={{ float: 'right' }}>1.2 km | 16 mins</span></li>
-                <li>DLF Centre Court <span style={{ float: 'right' }}>1.7 km | 22 mins</span></li>
-                <li>Genpact Chowk <span style={{ float: 'right' }}>1.4 km | 17 mins</span></li>
-                <li>Vishal Bus Services <span style={{ float: 'right' }}>1.9 km | 23 mins</span></li>
-              </ul>
-            </Panel>
-            <Panel header={<span><EnvironmentOutlined /> Airports</span>} key="2" style={{backgroundColor:"white",border:"none",marginBottom:"10px"}}>
-              <p className='Essential-para'>Nearest airports data goes here...</p>
-            </Panel>
-            <Panel header={<span><EnvironmentOutlined /> Metro Stations</span>} key="3" style={{backgroundColor:"white",border:"none",marginBottom:"10px"}}>
-              <p className='Essential-para'>Nearest metro stations data goes here...</p>
-            </Panel>
-          </Collapse>
-        </TabPane>
-
-        {/* Tab 2: Essentials */}
-        <TabPane tab="Essentials" key="2">
-          <Collapse accordion activeKey={activeKey} onChange={handleCollapseChange}>
-            <Panel header={<span><EnvironmentOutlined /> Hospitals</span>} key="1">
-              <p>Hospital data goes here...</p>
-            </Panel>
-            <Panel header={<span><EnvironmentOutlined /> Schools</span>} key="2">
-              <p>Schools data goes here...</p>
-            </Panel>
-            <Panel header={<span><EnvironmentOutlined /> Shopping Centers</span>} key="3">
-              <p>Shopping center data goes here...</p>
-            </Panel>
-          </Collapse>
-        </TabPane>
-
-        {/* Tab 3: Utility */}
-        <TabPane tab="Utility" key="3">
-          <Collapse accordion activeKey={activeKey} onChange={handleCollapseChange}>
-            <Panel header={<span><EnvironmentOutlined /> Water Supply</span>} key="1">
-              <p>Water supply data goes here...</p>
-            </Panel>
-            <Panel header={<span><EnvironmentOutlined /> Electricity</span>} key="2">
-              <p>Electricity data goes here...</p>
-            </Panel>
-            <Panel header={<span><EnvironmentOutlined /> Internet Providers</span>} key="3">
-              <p>Internet providers data goes here...</p>
-            </Panel>
-          </Collapse>
-        </TabPane>
+      <Tabs
+        activeKey={activeTab}
+        onChange={handleTabChange}
+        style={{ backgroundColor: "#F8F8F8", padding: "10px" }}
+        id="Essential"
+      >
+        {neighbourhood?.map((item) => (
+          <TabPane tab={item?.type} key={item?._id}>
+            <Collapse
+              accordion
+              activeKey={activeKey}
+              onChange={handleCollapseChange}
+              style={{ border: "none" }}
+            >
+              {item?.Transition?.map((item1) => (
+                <Panel
+                  header={
+                    <span>
+                      <EnvironmentOutlined /> {item1?.TypeOfType}
+                    </span>
+                  }
+                  key={item1?.TypeOfType}
+                  style={{
+                    backgroundColor: "white",
+                    border: "none",
+                    marginBottom: "10px",
+                  }}
+                >
+                  <ul className="Eseential-container">
+                    {item1?.value?.map((item2) => (
+                      <li className="Essential-text" key={item2?.landMark}>
+                        {item2?.landMark}{" "}
+                        <span style={{ float: "right" }}>
+                          {item2?.distance} | {item2?.time}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </Panel>
+              ))}
+            </Collapse>
+          </TabPane>
+        ))}
       </Tabs>
     </div>
   );

@@ -3,7 +3,7 @@ import PropertyList from './PropertyList';
 import '../../style/Buy/Search.css';
 
 
-const Menu = () => {
+const Menu = ({properties}) => {
   return (
     <div className="app-container">
 
@@ -21,9 +21,9 @@ const Menu = () => {
       <div className="property-list-wrapper">
           <div className='property-list-wrapper-heading'>
             <h1>Homes For Sale</h1>
-            <h5>844 results</h5>
+            <h5>{properties?.length} results</h5>
           </div>
-        <PropertyList />
+        <PropertyList properties={properties} />
       </div>
     </div>
   );

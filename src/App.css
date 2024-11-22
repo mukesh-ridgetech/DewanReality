@@ -47,6 +47,12 @@ line-height: normal;
 }
 
 .header {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
   overflow-x: hidden;
   display: flex;
   justify-content: space-between;
@@ -109,6 +115,7 @@ line-height: normal;
 
 
 .navbar {
+  margin-top: 70px;
   overflow-x: hidden;
   /* width: 95%; */
   display: flex;
@@ -119,8 +126,7 @@ line-height: normal;
   padding-left: 5%;
   padding-right: 10%;
   background-color: #FAFAFA;
-  
-  
+ 
 }
 
 .nav-left, .nav-right {
@@ -201,14 +207,14 @@ a:hover {
 
 
 .seach-bar{
-  padding-top: 10%;
+  padding-top: 17%;
   padding-left: 5%;
-  width: 50%;
+  width: 80%;
 }
 
 .seach-bar-heading{
   display: flex;
-  
+  width: 50%;
   background: rgba(255, 255, 255, 0.60);
   margin-left: 3%;
 }

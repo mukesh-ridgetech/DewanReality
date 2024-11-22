@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
 import Tabs1 from "./Tabs1";
+import Tab2 from "./Tab2";
 const SearchBar = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   // Residential Commercial Rental
@@ -49,7 +50,7 @@ const SearchBar = () => {
             </div>
 
             <div>
-              <Tabs1 />
+              <Tab2 />
             </div>
           </div>
         </div>

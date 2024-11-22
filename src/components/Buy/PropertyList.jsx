@@ -120,7 +120,7 @@ const properties = [
   // Add more property objects here for each card...
 ];
 
-const PropertyList = () => {
+const PropertyList = ({properties}) => {
   return (
 
     <>
@@ -128,7 +128,7 @@ const PropertyList = () => {
  {/* <h1>sldjfksdhfkj</h1> */}
 <div className="property-list-container">
   
-      {properties.map((property, index) => (
+      {properties?.map((property, index) => (
         <PropertyCard key={index} property={property} />
       ))}
     </div>

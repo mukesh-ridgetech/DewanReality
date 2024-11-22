@@ -6,17 +6,17 @@ import Amenties from "./Amenties";
 import Map from "./Map";
 import Esential from "./Esential";
 import FloorPlan from "./FloorPlan";
-const HeaderMainSection = () => {
+const HeaderMainSection = ({data}) => {
   return (
     <div className="container1">
       <div className="Header-main-section-container">
         <div className="Header-main-section-container-left">
-              <Overvies/>
-              <Description/>
-              <Amenties/>
-              <FloorPlan/>
+              <Overvies overview={data?.overview}/>
+              <Description description={data?.description}/>
+              <Amenties amenities={data?.amenities}/>
+              <FloorPlan floortypes={data?.floortypes} camelliasImage={data?.camelliasImage}/>
               < Map/>
-              <Esential/>
+              <Esential neighbourhood={data?.neighbourhood}/>
         </div>
 
 

@@ -1,30 +1,42 @@
 import React from "react";
 import Builder1 from "../../../public/images/b1-1.png";
 import Builder2 from "../../../public/images/b2-2.png";
-const ImageSection = () => {
+import { baseUrl } from "../helper/Helper";
+const ImageSection = ({images}) => {
+
+  const fullUrls = images?.map(path => `${baseUrl}${path}`);
   return (
     <>
       <div className="container1">
         <div className="Image-container">
           <div className="Image-container-left">
-            <img src={Builder1} alt="" />
+            {
+              fullUrls?(<><img src={fullUrls[0]} alt="" /></>):(<></>)
+            }
+            
           </div>
 
           <div className="Image-container-right-main">
             <div className="Image-container-right">
-              <div className="Image-container-right-item">
-                <img src={Builder2} alt="" />
+              
+              {
+                fullUrls?.map((item)=>{
+                       
+                  return(
+                    <>
+                <div className="Image-container-right-item">
+                <img src={item} alt="" />
               </div>
-              <div className="Image-container-right-item">
-                <img src={Builder1} alt="" />
-              </div>
+                    </>
+                  )
+                })
+              }
 
-              <div className="Image-container-right-item">
-                <img src={Builder2} alt="" />
-              </div>
-              <div className="Image-container-right-item">
-                <img src={Builder1} alt="" />
-              </div>
+
+              
+
+
+              
             </div>
 
             {/* <div className="Image-container-right">
