@@ -9,13 +9,13 @@ const SearchBar = () => {
   const texts = ["Residential", "Commercial", "Rental"]; // Array of texts
 
   // useEffect to change the text every 1 second
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length); // Loop over texts
-    }, 1000); // Change every 1 second
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length); // Loop over texts
+  //   }, 1000); // Change every 1 second
 
-    return () => clearInterval(interval); // Cleanup interval on unmount
-  }, [texts.length]);
+  //   return () => clearInterval(interval); // Cleanup interval on unmount
+  // }, [texts.length]);
 
   return (
     <>

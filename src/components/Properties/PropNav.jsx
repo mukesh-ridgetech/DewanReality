@@ -13,8 +13,8 @@ const Navbar = () => {
     <div className='container2'>  
     <div className="navbar1">
       <div className="nav-left1">
-        <Link to="/buy">Buy</Link>
-        <Link to="/rent">Rent</Link>
+        <Link to="/buy/buy">Buy</Link>
+        <Link to="/rent/rent">Rent</Link>
         <Link to="/upcomming">Upcoming Projects</Link>
       </div>
 

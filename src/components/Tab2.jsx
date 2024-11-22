@@ -16,10 +16,13 @@ import {
 import PriceSlider from "./PriceSlider";
 import axios from "axios";
 import { baseUrl } from "./helper/Helper";
+import { useNavigate } from "react-router-dom";
 // import { Slider } from 'antd';
 
-const SearchBar = () => {
+const Tab2 = () => {
   const [selectedTab, setSelectedTab] = useState("All");
+
+  const navigate= useNavigate()
   // const [activeTab, setActiveTab] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -36,6 +39,22 @@ const SearchBar = () => {
   const [selectPrice,setSelectedPrice] = useState();
   const [searchUrl,setSearchUrl] = useState();
   const [advanceFilter,setAdvanceFilter] = useState(false)
+  const[tabchange,setTabchange] = useState();
+
+
+ 
+
+  const handleTabClick1 = (tab) => {
+    // console.log("Clicked tab: ", tab);
+    setTabchange(tab)
+    if (selectedTab !== tab) {
+      setSelectedTab(tab);
+    }
+    // console.log("selectedTab",selectedTab);
+  };
+
+ console.log("selectedTab",selectedTab);
+
 
   const handleChange = (event) => {
     setSelectedSector(event.target.value); // Store the selected value in state
@@ -47,7 +66,7 @@ const SearchBar = () => {
 
 
   const handlePrice = (event) => {
-    setselectProperties(event.target.value); // Store the selected value in state
+    setSelectedPrice(event.target.value); // Store the selected value in state
   };
 
 
@@ -79,6 +98,7 @@ const SearchBar = () => {
   useEffect(() => {
     fetchLocagtion();
   }, []);
+  
 
   const fetchLocagtion = async () => {
     try {
@@ -139,10 +159,23 @@ const SearchBar = () => {
          try {
 
             if(advanceFilter){
-                const response = await axios.get(
-                    `${baseUrl}/api/properties/filter?${searchUrl}`
-                  );
-                  console.log(response.data);
+                // const response = await axios.get(
+                //     `${baseUrl}/api/properties/filter?${searchUrl}`
+                //   );
+                //   console.log(response.data);
+
+                  // if(response.data){
+                    setAdvanceFilter(false);
+                    setSearchUrl("");
+                    setselectProperties("");
+
+                    if(selectedTab ==='For Rent'){
+                      navigate(`/buy/${searchUrl}`)
+                    }
+                    else if(selectedTab ==='For Sale'){
+                      navigate(`/rent/${searchUrl}`)
+                    }
+                  // }
             }else{
                 const query = new URLSearchParams();
 
@@ -153,10 +186,25 @@ const SearchBar = () => {
                   if(selectedSector){
                     query.append("locationName", selectedSector);
                   }
-                  const response = await axios.get(
-                    `${baseUrl}/api/properties/filter?${ query.toString() }`
-                  );
-                  console.log(response.data);
+
+                  if(selectPrice){
+                    query.append("minPrice", selectPrice);
+                  }
+                  // const response = await axios.get(
+                  //   `${baseUrl}/api/properties/filter?${ query.toString() }`
+                  // );
+                  // console.log(response.data);
+
+                  // if(response.data){
+                    setselectProperties("");
+                    setSelectedSector("");
+                    if(selectedTab ==='For Rent'){
+                      navigate(`/buy/${query.toString()}`)
+                    }
+                    else if(selectedTab ==='For Sale'){
+                      navigate(`/rent/${query.toString()}`)
+                    }
+                  // }
             }
             
          } catch (error) {
@@ -165,7 +213,7 @@ const SearchBar = () => {
   }
 
   const handleSubmit = async (values) => {
-    // console.log("Filter Values:", values);
+    console.log("Filter Values:", values);
     // builderName,
     // locationName,
     // propertiesName,
@@ -183,6 +231,12 @@ const SearchBar = () => {
         
       const query = new URLSearchParams();
       
+
+      if(values?.amenities){
+         const result = values?.amenities?.map(item => item.replace(/ /g, "-")).join("_");
+         query.append("amenitiesName", result);
+      }
+
       if(selectProperties){
         query.append("propertiesCategory", selectProperties);
       }
@@ -236,19 +290,21 @@ const SearchBar = () => {
     }
   };
 
+  
+
   return (
     <div className="search-container">
       {/* Tabs Section */}
       <div className="tabs">
-        {["All", "For Rent", "For Sale"].map((tab) => (
-          <div
-            key={tab}
-            className={`tab ${selectedTab === tab ? "active" : ""}`}
-            onClick={() => setSelectedTab(tab)}
-          >
-            {tab}
-          </div>
-        ))}
+      {["All", "For Rent", "For Sale"].map((tab) => (
+        <div
+          key={tab}
+          className={`tab ${selectedTab === tab ? "active" : ""}`}
+          onClick={() => handleTabClick1(tab)}
+        >
+          {tab}
+        </div>
+      ))}
       </div>
 
       {/* Search Inputs Section */}
@@ -288,10 +344,10 @@ const SearchBar = () => {
 
         <div className="input-group">
           <select className="palceholder-style"  onChange={handlePrice}>
-            <option value="" >Price</option>
-            <option value="10000">10000</option>
-            <option value="200000">200000</option>
-            <option value="30000">300000</option>
+            <option value="" >Select Price</option>
+            <option value="10000">₹ 10000</option>
+            <option value="200000">₹ 200000</option>
+            <option value="30000">₹ 300000</option>
           </select>
         </div>
 
@@ -331,8 +387,8 @@ const SearchBar = () => {
           layout="vertical"
           onFinish={handleSubmit}
           initialValues={{
-            priceRange: [],
-            areaRange: [],
+            priceRange: [0,0],
+            areaRange: [0,0],
           }}
         >
           {/* Tabs */}
@@ -374,19 +430,24 @@ const SearchBar = () => {
           {/* Property Type */}
 
           {/* Price Range */}
-          <Form.Item label="Price (₹)" name="priceRange">
+          {/* <Form.Item label="Price (₹)" name="priceRange">
             <Slider
               range
               min={0}
               max={5000000}
               step={50000}
-              onChange={(value) => setPriceRange(value)}
+              // onChange={(value) => setPriceRange(value)
+              // }
             />
             <div style={{ marginTop: "10px" }}>
               <span>
                 Selected Price Range: ₹{priceRange[0]} - ₹{priceRange[1]}
               </span>
             </div>
+          </Form.Item> */}
+
+          <Form.Item label="Price (₹)" name="priceRange">
+            <Slider range min={0} max={100000} step={500} />
           </Form.Item>
 
           {/* Property Status */}
@@ -458,6 +519,10 @@ const SearchBar = () => {
                 "Shopping Center",
                 "Sewage Treatment Plant",
                 "Rain Water Harvesting",
+                "Internet Provider",
+                "Children’s Play Area",
+                "Gym"
+
               ].map((amenity) => (
                 <Checkbox key={amenity} value={amenity}>
                   {amenity}
@@ -687,4 +752,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default Tab2;
