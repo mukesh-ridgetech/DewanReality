@@ -3,20 +3,55 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Product from "./Product";
 import { productData, responsive } from "./data";
+import axios from "axios";
+import { baseUrl } from "./helper/Helper";
+import { useEffect, useState } from "react";
 const Croser = () => {
   // bds:3,
   //   ba:2,
   //   srrt:378,
-  const product = productData.map((item) => (
+
+const[data,setData] = useState([])
+const[properties,setProperties] = useState([])
+
+  useEffect(()=>{
+    fetchProperties();
+  },[])
+
+  const fetchProperties = async()=>{
+         try {
+             const response = await axios.get(baseUrl+'/api/trending/getTrending');
+             console.log("trending properties",response.data);
+
+             if(response.data){
+              setData(response.data);
+               const data = response?.data?.map((item)=>{
+                   return  item?.properties
+               })
+
+              console.log("properties is now",data)
+              setProperties(data);
+             }
+         } catch (error) {
+           console.log(error);
+         }
+  }
+
+  console.log("data is now",data);
+  const product = properties?.map((item) => (
     <Product
-      name={item.name}
-      url={item.imageurl}
-      price={item.price}
-      description={item.description}
-      bds={item.bds}
-      bs={item.bs}
-      srrt={item.srrt}
-      title={item.title}
+      // name={item.name}
+      url={item?.images}
+      price={item?.price}
+      description={item?.description}
+      bds={item?.bhkType}
+      // bs={item.bs}
+      srrt={item?.floortypes[0]?.Area}
+      propertiesType={item?.propertiesType}
+      location={item?.location}
+      builder={item?.builder}
+      id={item?._id}
+      // title={item.title}
     />
   ));
 

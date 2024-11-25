@@ -1,10 +1,22 @@
 import React from "react";
 import SimpleImageSlider from "react-simple-image-slider";
-const Product = ({ url,bds,ba,srrt ,description,title}) => {
+import { baseUrl } from "./helper/Helper";
+import { useNavigate } from "react-router-dom";
+const Product = ({ url,bds,srrt ,description,propertiesType,price,location,builder,id}) => {
   console.log("url is",url)
 
 
+ const navigate = useNavigate();
+  console.log("url is now ",url)
 
+  const image = url?.map((item)=>{
+       return `${baseUrl}${item}`
+  })
+
+
+  const handle = ()=>{
+    navigate(`/properties/${id}`);
+  }
   // bds={item.bds}
   //     bs={item.bs}
   //     srrt={item.srrt}
@@ -19,7 +31,7 @@ const Product = ({ url,bds,ba,srrt ,description,title}) => {
           <SimpleImageSlider
             width={"300px"}
             height={"177px"}
-            images={url}
+            images={image?image:[]}
             showBullets={true}
             showNavs={true}
             autoPlay={true}
@@ -28,9 +40,16 @@ const Product = ({ url,bds,ba,srrt ,description,title}) => {
         </div>
          
          <div className="Product-continer-main-text">
-            <pre><span style={{fontWeight:"bold"}}>{bds}</span> bhk | {ba} ba| <span style={{fontWeight:"bold"}}>{srrt}</span> sqrt | Active </pre>
-            <p>{description}</p>
-            <p>{title}</p>
+             <h2 onClick={handle}>{price}</h2>
+            <pre><span style={{fontWeight:"bold"}}>{bds}</span> BHK <span style={{fontWeight:"bold"}}>{srrt}</span>  |  
+             Apartment
+             
+            For {propertiesType}
+           
+            
+            </pre>
+            <p>{builder?.name},{location?.sector},{location?.city}</p>
+            {/* <p>{title}</p> */}
          </div>
 
 

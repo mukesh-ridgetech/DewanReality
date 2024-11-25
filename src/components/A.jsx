@@ -3,6 +3,7 @@ import { Carousel, Card, Button } from "antd";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { baseUrl } from "./helper/Helper";
 
 const carouselData = [
   {
@@ -80,8 +81,10 @@ const carouselData = [
   },
 ];
 
-const CarouselComponent = () => {
+const CarouselComponent = ({testinomial}) => {
   const carouselRef = useRef(null);
+
+console.log("testinomial",testinomial)
 
   const settings = {
     infinite: true,
@@ -142,7 +145,7 @@ const CarouselComponent = () => {
           {...settings}
           className="Testinomails-container"
         >
-          {carouselData.map((item, index) => (
+          {testinomial?.map((item, index) => (
             <div key={index}>
               <Card
                 hoverable
@@ -162,7 +165,7 @@ const CarouselComponent = () => {
                 cover={
                   <img
                     alt="large"
-                    src={item.largeImage}
+                    src={`${baseUrl}${item?.images[0]}`}
                     style={{ height: "169px" }}
                   />
                 }
@@ -177,7 +180,7 @@ const CarouselComponent = () => {
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <img
                       alt="small"
-                      src={item.smallImage}
+                      src={`${baseUrl}${item?.images[0]}`}
                       style={{
                         width: 50,
                         height: 50,
@@ -217,12 +220,12 @@ const CarouselComponent = () => {
                         />
                       </svg>
 
-                      <span style={{ marginLeft: "10px" }}>5.0</span>
+                      <span style={{ marginLeft: "10px" }}>{item?.rating}</span>
                     </div>
                   </div>
                 </div>
 
-                <p>{item.text}</p>
+                <p>{item?.description}</p>
                 {/* <div style={{ fontWeight: "bold" }}>Rating: {item.rating}</div> */}
               </Card>
             </div>

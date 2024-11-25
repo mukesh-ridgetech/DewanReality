@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../App.css";
 import Tabs1 from "./Tabs1";
 import Tab2 from "./Tab2";
-const SearchBar = () => {
+const SearchBar = ({locations,selectedLocation,setSelectedLocation}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   // Residential Commercial Rental
 
@@ -50,7 +50,7 @@ const SearchBar = () => {
             </div>
 
             <div>
-              <Tab2 />
+              <Tab2 locations={locations} selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation}/>
             </div>
           </div>
         </div>
