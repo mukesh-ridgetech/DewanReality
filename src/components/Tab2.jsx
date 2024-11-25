@@ -13,24 +13,16 @@ import {
   Row,
   Col,
 } from "antd";
-import { Select, Spin } from "antd";
-
-const { Option } = Select;
 import PriceSlider from "./PriceSlider";
 import axios from "axios";
 import { baseUrl } from "./helper/Helper";
 import { useNavigate } from "react-router-dom";
 // import { Slider } from 'antd';
 
-const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
+const Tab2 = () => {
   const [selectedTab, setSelectedTab] = useState("All");
 
   const navigate= useNavigate()
-
-
-  const handleSelectionChange = (e)=>{
-    setSelectedLocation(e.target.value); 
-  }
   // const [activeTab, setActiveTab] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -318,19 +310,16 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
       {/* Search Inputs Section */}
        <div className="search-bar">
         <div className="input-group">
-        <select
-                placeholder="Select a location"
-                value={selectedLocation}
-                onChange={handleSelectionChange}
-                style={{ width: "100%" }}
-                
-            >
-                {locations.map((location) => (
-                    <option key={location._id} value={location.city}>
-                        {location.city} {/* Adjust according to the actual API response field */}
-                    </option>
-                ))}
-            </select>
+          <select className="placeholder-style" onChange={handleChange}>
+            <>
+              <option value="" >Select Location</option>
+              {location?.map((item) => (
+                <option key={item?._id} value={item?.sector}>
+                  {item?.city}
+                </option>
+              ))}
+            </>
+          </select>
         </div>
 
         <div className="input-group large-input  palceholder-style">
