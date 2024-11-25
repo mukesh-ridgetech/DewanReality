@@ -28,8 +28,8 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
   const navigate= useNavigate()
 
 
-  const handleSelectionChange = (value)=>{
-    setSelectedLocation(value); 
+  const handleSelectionChange = (e)=>{
+    setSelectedLocation(e.target.value); 
   }
   // const [activeTab, setActiveTab] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -318,7 +318,7 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
       {/* Search Inputs Section */}
        <div className="search-bar">
         <div className="input-group">
-        <Select
+        <select
                 placeholder="Select a location"
                 value={selectedLocation}
                 onChange={handleSelectionChange}
@@ -326,11 +326,11 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
                 
             >
                 {locations.map((location) => (
-                    <Option key={location._id} value={location.city}>
+                    <option key={location._id} value={location.city}>
                         {location.city} {/* Adjust according to the actual API response field */}
-                    </Option>
+                    </option>
                 ))}
-            </Select>
+            </select>
         </div>
 
         <div className="input-group large-input  palceholder-style">
