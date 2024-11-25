@@ -19,7 +19,7 @@ import { baseUrl } from "./helper/Helper";
 import { useNavigate } from "react-router-dom";
 // import { Slider } from 'antd';
 
-const Tab2 = () => {
+const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
   const [selectedTab, setSelectedTab] = useState("All");
 
   const navigate= useNavigate()

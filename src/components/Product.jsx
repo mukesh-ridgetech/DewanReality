@@ -39,8 +39,8 @@ const Product = ({ url,bds,srrt ,description,propertiesType,price,location,build
           />
         </div>
          
-         <div className="Product-continer-main-text">
-             <h2 onClick={handle}>{price}</h2>
+         <div className="Product-continer-main-text"  onClick={handle} style={{cursor:"pointer"}}>
+             <h2 >{price}</h2>
             <pre><span style={{fontWeight:"bold"}}>{bds}</span> BHK <span style={{fontWeight:"bold"}}>{srrt}</span>  |  
              Apartment
              
