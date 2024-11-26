@@ -38,8 +38,10 @@ const[properties,setProperties] = useState([])
   }
 
   console.log("data is now",data);
-  const product = properties?.map((item) => (
-    <Product
+  const product = properties?.map((item1) => (
+
+    item1?.map((item)=>(
+      <Product
       // name={item.name}
       url={item?.images}
       price={item?.price}
@@ -52,7 +54,10 @@ const[properties,setProperties] = useState([])
       builder={item?.builder}
       id={item?._id}
       // title={item.title}
-    />
+    />   
+
+    ))
+   
   ));
 
   const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
