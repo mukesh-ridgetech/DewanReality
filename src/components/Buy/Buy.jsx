@@ -16,9 +16,46 @@ const Buy = () => {
 
   const [properties,setProperties] = useState();
   const[filterdata,setFilterData] = useState();
+  const [searching,setSearching] = useState(false);
+  const [price,setPrice] = useState();
+  const[search,setSearch] = useState();
+  const [testinomial,setTestinomial] = useState();
+  const[searchData,setSearchData] = useState();
   const { id } = useParams();
 
   console.log("id is",id)
+
+
+  const HandleSearch = async()=>{
+    try {
+
+
+           const query = new URLSearchParams();
+             if(price){
+               // propertiesType
+               query.append("minPrice", price);
+             }
+
+             if(search){
+              query.append("searchQuery", search);
+             }
+             
+             const response = await axios.get(
+               `${baseUrl}/api/properties/filter?${ query.toString() }`
+             );
+             console.log(response.data);
+
+             if(response.data){
+              setSearching(true);
+              const filteredData = response?.data?.filter(item => item.propertiesType === 'sell');
+              setSearchData(filteredData)
+             }
+   
+
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
 
@@ -28,7 +65,8 @@ const filterData = async()=>{
        console.log(response.data);
 
        if(response.data){
-        setFilterData(response.data)
+        const filteredData = response?.data?.filter(item => item.propertiesType === 'sell');
+        setFilterData(filteredData)
        }
        
      } catch (error) {
@@ -53,14 +91,41 @@ const filterData = async()=>{
         }
   }
 
+
+
+
+
+  useEffect(()=>{
+    fetchTestinomial();
+  },[])
+  
+   const fetchTestinomial = async()=>{
+        try {
+            const response = await axios.get(baseUrl+'/api/testinomial/getTestinomial');
+            console.log("testinomial data",response.data);
+
+            if(response.data){
+              setTestinomial(response.data)
+            }
+        } catch (error) {
+
+          
+           console.log(error)
+        }
+
+   }
+
   return (
     <>
         <PropNav/>
-        <Search/>
+        <Search price={price} setPrice={setPrice} search={search} setSearch={setSearch} HandleSearch={HandleSearch}/>
 
         {
           id==='buy'?(<>
-        <Menu  properties={properties}/>
+           {
+            searching?(<Menu  properties={searchData}/>):(<Menu  properties={properties}/>)
+          }
+        {/* <Menu  properties={properties}/> */}
           </>):(<>
             <Menu  properties={filterdata}/>
           </>)
@@ -68,7 +133,7 @@ const filterData = async()=>{
 
         {/* <RoadMap/> */}
        <DontMiss/>
-        <A/>
+        <A testinomial={testinomial}/>
         <Footer/>
         {/* <PropertyList/> */}
     </>

@@ -16,9 +16,52 @@ const Rent = () => {
 
   const [properties,setProperties] = useState();
   const[filterdata,setFilterData] = useState();
+  const [searching,setSearching] = useState(false);
+  const [price,setPrice] = useState();
+  const[search,setSearch] = useState();
+  const[searchData,setSearchData] = useState();
+  const [testinomial,setTestinomial] = useState();
   const { id } = useParams();
 
-  console.log("id is",id)
+
+
+
+  const HandleSearch = async()=>{
+    try {
+
+
+           const query = new URLSearchParams();
+             if(price){
+               // propertiesType
+               query.append("minPrice", price);
+             }
+
+             if(search){
+              query.append("searchQuery", search);
+             }
+             
+             const response = await axios.get(
+               `${baseUrl}/api/properties/filter?${ query.toString() }`
+             );
+             console.log(response.data);
+
+             if(response.data){
+              setSearching(true);
+              const filteredData = response?.data?.filter(item => item.propertiesType === 'rent');
+              setSearchData(filteredData)
+             }
+   
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+  
+
+  // console.log("id is",id)
+  console.log("price",price);
+  console.log("search",search);
 
 
 
@@ -40,35 +83,70 @@ const filterData = async()=>{
     fetchPropeties();
     filterData()
   },[])
+
+
   const fetchPropeties = async()=>{
         try {
           const response = await axios.get(baseUrl+'/api/properties/getProperties');
           console.log(response.data);
 
           if(response.data){
-            setProperties(response.data);
+
+            const filteredData = response?.data?.filter(item => item.propertiesType === 'rent');
+            setProperties(filteredData);
           }
         } catch (error) {
           console.log(error)
         }
   }
 
+
+
+
+
+  useEffect(()=>{
+    fetchTestinomial();
+  },[])
+  
+   const fetchTestinomial = async()=>{
+        try {
+            const response = await axios.get(baseUrl+'/api/testinomial/getTestinomial');
+            console.log("testinomial data",response.data);
+
+            if(response.data){
+              setTestinomial(response.data)
+            }
+        } catch (error) {
+
+          
+           console.log(error)
+        }
+
+   }
+
   return (
     <>
         <PropNav/>
-        <Search/>
+        <Search  price={price} setPrice={setPrice} search={search} setSearch={setSearch} HandleSearch={HandleSearch}/>
 
         {
           id==='rent'?(<>
-        <Menu  properties={properties}/>
+
+          {
+            searching?(<Menu  properties={searchData}/>):(<Menu  properties={properties}/>)
+          }
+        
           </>):(<>
-            <Menu  properties={filterdata}/>
+
+          <Menu  properties={filterdata}/>
+          
+            
           </>)
         }
 
         {/* <RoadMap/> */}
        <DontMiss/>
-        <A/>
+        <A testinomial={testinomial}/>
         <Footer/>
         {/* <PropertyList/> */}
     </>

@@ -6,7 +6,7 @@ import { productData, responsive } from "./data";
 import axios from "axios";
 import { baseUrl } from "./helper/Helper";
 import { useEffect, useState } from "react";
-const Croser = () => {
+const Croser = ({selectedLocation}) => {
   // bds:3,
   //   ba:2,
   //   srrt:378,
@@ -15,7 +15,7 @@ const[data,setData] = useState([])
 const[properties,setProperties] = useState([])
 
   useEffect(()=>{
-    fetchProperties();
+    // fetchProperties();
   },[])
 
   const fetchProperties = async()=>{
@@ -38,9 +38,12 @@ const[properties,setProperties] = useState([])
   }
 
   console.log("data is now",data);
-  const product = properties?.map((item1) => (
+  const product =properties.length >0 && properties?.map((item1) => (
+ 
 
-    item1?.map((item)=>(
+    console.log("item1",item1),
+
+    item1?.properties?.map((item)=>(
       <Product
       // name={item.name}
       url={item?.images}
@@ -59,6 +62,32 @@ const[properties,setProperties] = useState([])
     ))
    
   ));
+
+
+  // filterByLocation.
+
+  useEffect(()=>{
+    if(selectedLocation){
+      filterTrending()
+    }
+    
+  },[selectedLocation])
+
+  const filterTrending = async()=>{
+       try {
+
+        const postData = {
+          location :selectedLocation
+        }
+          const responce = await axios.post(baseUrl+'/api/trending/filterByLocation/',postData)
+       
+         if(responce.data){
+          setProperties(responce?.data);
+         }
+        } catch (error) {
+        console.log(error)
+       }
+  }
 
   const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
     const {
@@ -113,10 +142,12 @@ const[properties,setProperties] = useState([])
 
   return (
     <>
-      <div className="container">
+   
+      {
+        properties.length>0?<div className="container">
         <div className="Crouser" >
           <div className="Crouser-box-text">
-            <h1>Trending Properties in Gurugram</h1>
+            <h1>Trending Properties in <span style={{textTransform:"capitalize"}}>{selectedLocation}</span></h1>
             <h4>
               Viewed and saved the most in the area over the past 24 hours
             </h4>
@@ -135,7 +166,8 @@ const[properties,setProperties] = useState([])
             </Carousel>
           </div>
         </div>
-      </div>
+      </div>:""
+      }
     </>
   );
 };

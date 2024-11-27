@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../../public/images/logo.png";
 import Overvies from "./Overvies";
 import Description from "./Description";
@@ -6,7 +6,57 @@ import Amenties from "./Amenties";
 import Map from "./Map";
 import Esential from "./Esential";
 import FloorPlan from "./FloorPlan";
-const HeaderMainSection = ({data}) => {
+import { Form, Input, Button, Select, Modal, message } from 'antd';
+import axios from 'axios';
+import { baseUrl } from "../helper/Helper";
+
+const { Option } = Select;
+const HeaderMainSection = ({data,id}) => {
+
+
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Handle modal visibility
+  const showModal = () => setIsModalOpen(true);
+  const handleCancel = () => setIsModalOpen(false);
+
+  const handleSubmit = async (values) => {
+    try {
+      setLoading(true);
+      
+      const postData = {
+        name:values.name,
+        email:values.email,
+        phone:values.phone,
+        date:values.date,
+        properties:id
+      }
+
+      const response = await axios.post(`${baseUrl}/api/shedule/createShedule`, postData);
+      
+      if(response.data){
+        message.success('Schedule created successfully!');
+        form.resetFields();
+        setIsModalOpen(false); // Close modal on success
+      }
+      
+    } catch (error) {
+      message.error('Error creating schedule. Please try again.');
+      console.log(error)
+    } finally {
+      setLoading(false);
+    }
+  };
+
+ const   handleScrollToBottom = ()=>{
+  window.scrollTo({
+    top: document.documentElement.scrollHeight, // Scroll to the bottom
+    behavior: "smooth", // Smooth scrolling
+  });
+ }
+  
   return (
     <div className="container1">
       <div className="Header-main-section-container">
@@ -25,7 +75,7 @@ const HeaderMainSection = ({data}) => {
             <img src={logo} alt="" />
           </div>
           <div className="Header-main-section-container-right-button-1">
-            <button>
+            <button style={{cursor:"pointer"}} onClick={showModal}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -42,10 +92,74 @@ const HeaderMainSection = ({data}) => {
             </button>
           </div>
           <div className="Header-main-section-container-right-button-2">
-            <button>Request a callback</button>
+            <button onClick={handleScrollToBottom} style={{cursor:"pointer"}}>Request a callback</button>
           </div>
         </div>
       </div>
+
+
+
+
+      <Modal
+        title="Schedule Site Visit"
+        open={isModalOpen}
+        onCancel={handleCancel}
+        footer={null} // Remove default footer buttons
+      >
+        <Form
+          form={form}
+          layout="vertical"
+          onFinish={handleSubmit}
+          style={{ maxWidth: 600, margin: '0 auto' }}
+        >
+          <Form.Item
+            label="Name"
+            name="name"
+            rules={[{ required: true, message: 'Please enter your name' }]}
+          >
+            <Input placeholder="Enter your name" />
+          </Form.Item>
+          <Form.Item
+            label="Phone"
+            name="phone"
+            rules={[{ required: true, message: 'Please enter your phone number' }]}
+          >
+            <Input placeholder="Enter your phone number" />
+          </Form.Item>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              { required: true, message: 'Please enter your email' },
+              { type: 'email', message: 'Please enter a valid email' },
+            ]}
+          >
+            <Input placeholder="Enter your email" />
+          </Form.Item>
+          <Form.Item
+            label="Date"
+            name="date"
+            rules={[{ required: true, message: 'Please select a date' }]}
+          >
+            {/* Simple date input */}
+            <Input type="date" style={{ width: '100%' }} />
+          </Form.Item>
+          {/* <Form.Item
+            label="Status"
+            name="status"
+            initialValue="Active"
+            rules={[{ required: true, message: 'Please select a status' }]}
+          >
+            <Select>
+              <Option value="Active">Active</Option>
+              <Option value="Inactive">Inactive</Option>
+            </Select>
+          </Form.Item> */}
+          <Button type="primary" htmlType="submit" loading={loading} block>
+            Submit
+          </Button>
+        </Form>
+      </Modal>
     </div>
   );
 };

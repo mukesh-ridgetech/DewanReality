@@ -3,11 +3,11 @@ import SimpleImageSlider from "react-simple-image-slider";
 import { baseUrl } from "./helper/Helper";
 import { useNavigate } from "react-router-dom";
 const Product = ({ url,bds,srrt ,description,propertiesType,price,location,builder,id}) => {
-  console.log("url is",url)
+  // console.log("url is",url)
 
 
  const navigate = useNavigate();
-  console.log("url is now ",url)
+  // console.log("url is now ",url)
 
   const image = url?.map((item)=>{
        return `${baseUrl}${item}`
@@ -40,7 +40,7 @@ const Product = ({ url,bds,srrt ,description,propertiesType,price,location,build
         </div>
          
          <div className="Product-continer-main-text"  onClick={handle} style={{cursor:"pointer"}}>
-             <h2 >{price}</h2>
+             <h2 >₹{price}</h2>
             <pre><span style={{fontWeight:"bold"}}>{bds}</span> BHK <span style={{fontWeight:"bold"}}>{srrt}</span>  |  
              Apartment
              

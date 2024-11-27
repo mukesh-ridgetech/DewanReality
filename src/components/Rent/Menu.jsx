@@ -54,7 +54,7 @@ const Menu = ({properties}) => {
       </div>
       <div className="property-list-wrapper">
           <div className='property-list-wrapper-heading'>
-            <h1>Homes For Sale</h1>
+            <h1>Homes For Rent</h1>
             <h5>{properties?.length} results</h5>
           </div>
         <PropertyList properties={properties} />

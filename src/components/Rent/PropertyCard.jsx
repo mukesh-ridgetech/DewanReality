@@ -150,6 +150,7 @@ import "../../style/Buy/Search.css";
 import SimpleImageSlider from "react-simple-image-slider";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../helper/Helper";
+import { message } from "antd";
 
 const PropertyCard = ({ property }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -178,12 +179,20 @@ const PropertyCard = ({ property }) => {
     );
   };
 
+
+  const handleShare = (id)=>{
+    navigator.clipboard.writeText(`https://dewan-reality-vvcw.vercel.app/properties/${id}`);
+
+    // Alert the copied text
+    message.success("Link has been  Copied")
+  }
+
   console.log(property?.builderLogo)
 
   return (
-    <div className="property-card" onClick={handle}>
+    <div className="property-card" >
       <div className="image-container" style={{ position: "relative" }}>
-        <span style={{ position: "absolute", zIndex: "20", right: 5, top: 5 }}>
+        <span style={{ position: "absolute", zIndex: "20", right: 5, top: 5 }} onClick={()=>{handleShare(property._id)}}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -257,8 +266,8 @@ const PropertyCard = ({ property }) => {
       </div>
 
       
-      <div className="property-details">
-        <h3 id="heading">{property.price}</h3>
+      <div className="property-details" onClick={handle}>
+        <h3 id="heading">₹{property.price}</h3>
         <p id="para1">
           {property?.floortypes[0]?.bhk} | {property?.bhkType} ba | {property?.floortypes[0]?.Area}{" "} | Appartment For 
           {" "}{property?.propertiesType}

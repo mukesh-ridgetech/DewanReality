@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../App.css';  // Import the CSS for styling
 import logo from '../../public/images/logo.png'
 import { Select, Spin } from "antd";
@@ -11,7 +11,12 @@ const Header = ({locations,selectedLocation,setSelectedLocation}) => {
   console.log("locations",selectedLocation)
   const handleSelectionChange = (e)=>{
     setSelectedLocation(e.target.value); 
+    
   }
+
+  useEffect(()=>{
+
+  },[selectedLocation])
   return (
 
 

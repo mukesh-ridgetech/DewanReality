@@ -5,7 +5,7 @@ import In from '../../public/images/instagram 1.png';
 import Linkedin from '../../public/images/linkedin 1.png';
 
 
-const Footer = () => {
+const Footer = ({name ,setName, phone, email, setPhone, setEmail, message, setMessage,handleFormSubmit}) => {
   return (
     <div className="contact-container">
       {/* Left Div */}
@@ -41,11 +41,11 @@ const Footer = () => {
       <div className="contact-right">
         <h2>Request a Callback</h2>
         <form className="callback-form">
-          <input class="styled-textarea" type="text" placeholder="Your Name" />
-          <input class="styled-textarea" type="text" placeholder="Mobile Number" />
-          <input class="styled-textarea" type="email" placeholder="E-mail Address" />
-          <textarea class="styled-textarea" placeholder="Message" />
-          <button type="submit">SUBMIT</button>
+          <input class="styled-textarea" type="text" placeholder="Your Name" value={name} onChange={(e)=>{setName(e.target.value)}}/>
+          <input class="styled-textarea" type="text" placeholder="Mobile Number" value={phone} onChange={(e)=>{setPhone(e.target.value)}}/>
+          <input class="styled-textarea" type="email" placeholder="E-mail Address" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
+          <textarea class="styled-textarea" placeholder="Message"  value={message} onChange={(e)=>{setMessage(e.target.value)}}/>
+          <button  onClick={handleFormSubmit}>SUBMIT</button>
         </form>
       </div>
     </div>

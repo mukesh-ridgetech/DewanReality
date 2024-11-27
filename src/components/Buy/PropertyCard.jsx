@@ -36,7 +36,7 @@ const PropertyCard = ({ property }) => {
   console.log(property?.builderLogo)
 
   return (
-    <div className="property-card" onClick={handle}>
+    <div className="property-card" >
       <div className="image-container" style={{ position: "relative" }}>
         <span style={{ position: "absolute", zIndex: "20", right: 5, top: 5 }}>
           <svg
@@ -112,8 +112,8 @@ const PropertyCard = ({ property }) => {
       </div>
 
       
-      <div className="property-details">
-        <h3 id="heading">{property.price}</h3>
+      <div className="property-details" onClick={handle}>
+        <h3 id="heading">₹{property.price}</h3>
         <p id="para1">
           {property?.floortypes[0]?.bhk} | {property?.bhkType} ba | {property?.floortypes[0]?.Area}{" "} | Appartment For 
           {" "}{property?.propertiesType}

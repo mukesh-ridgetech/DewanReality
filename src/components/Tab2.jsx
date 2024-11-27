@@ -40,6 +40,7 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
   const [searchUrl,setSearchUrl] = useState();
   const [advanceFilter,setAdvanceFilter] = useState(false)
   const[tabchange,setTabchange] = useState();
+  const [inputValue, setInputValue] = useState("");
 
 
  
@@ -99,6 +100,11 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
     fetchLocagtion();
   }, []);
   
+
+
+  const handleSelectionChange = (e)=>{
+    setSelectedLocation(e.target.value); 
+  }
 
   const fetchLocagtion = async () => {
     try {
@@ -182,13 +188,25 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
                 if(selectProperties){
                     query.append("propertiesCategory", selectProperties);
                   }
+
+                  if(inputValue){
+                    query.append("searchQuery", inputValue);
+                  }
                      
-                  if(selectedSector){
-                    query.append("locationName", selectedSector);
+                  if(selectedLocation){
+                    query.append("locationName", selectedLocation);
                   }
 
                   if(selectPrice){
                     query.append("minPrice", selectPrice);
+                  }
+
+                  if(selectedTab ==='For Rent'){
+                    // propertiesType
+                    query.append("propertiesType", 'rent');
+                  }
+                  else if(selectedTab ==='For Sale'){
+                    query.append("propertiesType", 'sell');
                   }
                   // const response = await axios.get(
                   //   `${baseUrl}/api/properties/filter?${ query.toString() }`
@@ -199,10 +217,10 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
                     setselectProperties("");
                     setSelectedSector("");
                     if(selectedTab ==='For Rent'){
-                      navigate(`/buy/${query.toString()}`)
+                      navigate(`/rent/${query.toString()}`)
                     }
                     else if(selectedTab ==='For Sale'){
-                      navigate(`/rent/${query.toString()}`)
+                      navigate(`/buy/${query.toString()}`)
                     }
                   // }
             }
@@ -264,13 +282,26 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
       if (values.propertyAge) {
         query.append("maxAge", values.propertyAge);
       }
+     
+      // "For Rent", "For Sale"
+      if(selectedTab ==='For Rent'){
+        // propertiesType
+        query.append("propertiesType", 'rent');
+      }
+      else if(selectedTab ==='For Sale'){
+        query.append("propertiesType", 'sell');
+      }
 
       if (values.priceRange[1]) {
         query.append("maxPrice", values.priceRange[1]);
       }
 
-      if(selectedSector){
-        query.append("locationName", selectedSector);
+      if(selectedLocation){
+        query.append("locationName", selectedLocation);
+      }
+
+      if(inputValue){
+        query.append("searchQuery", inputValue);
       }
      
 
@@ -292,6 +323,15 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
 
   
 
+  // Variable to store the input value
+
+  const handleInputChange = (event) => {
+    const formattedValue = event.target.value.replace(/ /g, "_");
+    setInputValue(formattedValue); // Update the variable with the formatted value
+  };
+
+  console.log("inputValue",inputValue);
+
   return (
     <div className="search-container">
       {/* Tabs Section */}
@@ -310,24 +350,30 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
       {/* Search Inputs Section */}
        <div className="search-bar">
         <div className="input-group">
-          <select className="placeholder-style" onChange={handleChange}>
-            <>
-              <option value="" >Select Location</option>
-              {location?.map((item) => (
-                <option key={item?._id} value={item?.sector}>
-                  {item?.city}
-                </option>
-              ))}
-            </>
-          </select>
+        <select
+                // placeholder="Select a location"
+                value={selectedLocation}
+                onChange={handleSelectionChange}
+                // style={{ width: "130px" ,border:"none",backgroundColor:"transparent",fontWeight:"bold",fontSize:"1.2rem"}}
+
+           >
+                {locations.map((location) => (
+                    <option key={location._id} value={location.city}>
+                        {location.city}
+                    </option>
+                ))}
+            </select>
         </div>
 
-        <div className="input-group large-input  palceholder-style">
-          <input
-            type="text"
-            placeholder="Enter an address, neighbourhood, city, or PIN code"
-          />
-        </div>
+        <div className="input-group large-input placeholder-style">
+      <input
+        type="text"
+        placeholder="Enter an address, neighbourhood, city, or PIN code"
+        value={inputValue} // Bind the input value to the state
+        onChange={handleInputChange} // Update state on change
+      />
+     
+    </div>
 
         <div className="input-group">
           <select className="palceholder-style" onChange={handleProperties}>
@@ -393,7 +439,7 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
         >
           {/* Tabs */}
 
-          <Form.Item label="Property Type" name="propertyType">
+          {/* <Form.Item label="Property Type" name="propertyType">
             <Radio.Group>
               <Radio.Button value="sell">For Sale</Radio.Button>
               <Radio.Button value="rent">For Rent</Radio.Button>
@@ -401,7 +447,7 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
                 Upcoming Projects
               </Radio.Button>
             </Radio.Group>
-          </Form.Item>
+          </Form.Item> */}
 
           {/* <Form.Item label="Property Type" name="propertyType">
   <Checkbox.Group>
