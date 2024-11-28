@@ -8,12 +8,13 @@ const addresses = [
     { id: 3, name: "Amity University Noida", lat: 28.5469, lng: 77.3347 },
 ];
 
+const googleMapApiKey = import.meta.env.google_map;
 const MapWithMultipleMarkers = () => {
   // Default center of the map
   const center = { lat: 28.5672, lng: 77.3260 };
 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyAd3ORLbFvHlsDje7naOmYyogcZTgXzsLs">
+    <LoadScript googleMapsApiKey={googleMapApiKey}>
       <GoogleMap
         mapContainerStyle={{ width: "100%", height: "400px" }}
         center={center}
