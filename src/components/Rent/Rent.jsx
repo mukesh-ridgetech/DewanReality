@@ -11,6 +11,7 @@ import RoadMap from '../RoadMap'
 import { baseUrl } from '../helper/Helper'
 import axios from 'axios'
 import { useParams } from "react-router-dom";
+import PropNav1 from '../Properties/PropNav1'
 
 const Rent = () => {
 
@@ -57,7 +58,11 @@ const Rent = () => {
     }
 }
 
-  
+useEffect(()=>{
+
+  if(id !=='rent')
+  HandleSearch()
+},[searching])
 
   // console.log("id is",id)
   console.log("price",price);
@@ -126,7 +131,9 @@ const filterData = async()=>{
 
   return (
     <>
-        <PropNav/>
+
+    <PropNav1/>
+        {/* <PropNav/> */}
         <Search  price={price} setPrice={setPrice} search={search} setSearch={setSearch} HandleSearch={HandleSearch}/>
 
         {

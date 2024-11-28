@@ -349,7 +349,7 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
 
       {/* Search Inputs Section */}
        <div className="search-bar">
-        <div className="input-group">
+        <div className="input-group ">
         <select
                 // placeholder="Select a location"
                 value={selectedLocation}
@@ -375,7 +375,7 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
      
     </div>
 
-        <div className="input-group">
+        <div className="input-group disabled-item">
           <select className="palceholder-style" onChange={handleProperties}>
 
           {/* <Radio value="Residential">Residential</Radio>
@@ -388,7 +388,7 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
           </select>
         </div>
 
-        <div className="input-group">
+        <div className="input-group disabled-item">
           <select className="palceholder-style"  onChange={handlePrice}>
             <option value="" >Select Price</option>
             <option value="10000">₹ 10000</option>
@@ -397,7 +397,7 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
           </select>
         </div>
 
-        <button className="advanced-filter">
+        <button className="advanced-filter disabled-item">
           <img
             src={LinkImage}
             alt=""

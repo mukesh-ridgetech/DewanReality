@@ -7,8 +7,10 @@
     /* border: 2px solid black; */
     overflow-x: hidden;
     margin: auto;
+    margin-top: 10px;
     padding-left: 72px;
     padding-right: 72px;
+    z-index: 100;
 }
 
 
@@ -17,7 +19,7 @@
     top :0;
     width: 100%;
     background-color: #FAFAFA;
-    z-index: 20;
+    z-index: 100;
 }
 
 .navbar1 {
@@ -54,9 +56,16 @@ a {
     border-radius: 4px;
     line-height: normal;
     transition: color 0.3s;
+    cursor: pointer;
 }
 
 .navbar1 a:hover {
+
+    background: var(--DR, linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #0041D9);
+    color: white;
+}
+
+.navbar1 .active {
 
     background: var(--DR, linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #0041D9);
     color: white;
@@ -514,7 +523,7 @@ a {
 
 
 .Header-main-section-container-right {
-    position: sticky; 
+    /* position: sticky; 
     top: 10;
     display: flex;
 width: 30%;
@@ -525,9 +534,25 @@ align-items: center;
 gap: 14px;
 flex-shrink: 0;
 border-radius: 20px;
-border: 1px solid var(--new-gray, #B1B1B1);
+border: 1px solid var(--new-gray, #B1B1B1); */
 
 order: 2;
+}
+
+.Header-main-section-container-similar{
+    /* position: sticky;  */
+    position: relative;
+    top: 10;
+    display: flex;
+width: 85%;
+height: 300px;
+padding: 7px 23px;
+flex-direction: column;
+align-items: center;
+gap: 14px;
+flex-shrink: 0;
+border-radius: 20px;
+border: 1px solid var(--new-gray, #B1B1B1);
 }
 
 .Header-main-section-container-right-image {
@@ -667,7 +692,7 @@ background-color: transparent;
     display: flex;
     flex-direction: row;
     width: 47%;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     /* border: 1px solid black; */
 }
@@ -715,6 +740,7 @@ padding: 0%;
 
 /* description */
 .description-container {
+    width: 89%;
     overflow-x: hidden;
     margin-top: 33px;
     
@@ -814,15 +840,19 @@ line-height: 26px; /* 144.444% */
   .amenities-grid {
     width: 100%;
     display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 16px;
   }
   
   .amenity-item {
-    width: 15%;
+    width: 100px;
     height: 143px;
     display: flex;
     flex-direction: column;
     align-items: center;
+   
     padding: 8px;
     background: var(--alabaster, #F8F8F8);
     border-radius: 8px;
@@ -887,7 +917,7 @@ line-height: normal;
   .map-container{
     margin-top: 40px;
     display: flex;
-    width: 100%;
+    width: 101%;
     height: 431px;
    flex-direction: column;
    align-items: flex-start;

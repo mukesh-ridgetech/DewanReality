@@ -215,9 +215,32 @@ a:hover {
 .seach-bar-heading{
   display: flex;
   width: 50%;
+  gap: 10px;
   background: rgba(255, 255, 255, 0.60);
   margin-left: 3%;
 }
+
+@media (max-width: 768px){
+  .seach-bar-heading{
+    padding: 2px;
+    display: flex;
+    width: 110%;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.60);
+    margin-left: 3%;
+    font-size: 20px;
+  }
+
+  /* .seach-bar-heading h1{
+    font-size: 20px;
+  }
+
+  .search-bar-h1 h1{
+    font-size: 10px;
+  } */
+}
+
+
 
 
 
@@ -890,6 +913,8 @@ line-height: normal;
   .testinomial-heading h1{
     font-size: 25px;
   }
+
+  
 }
 
 /* Hide the select field's border and input */
@@ -936,3 +961,5 @@ line-height: normal;
 /* .ant-select{
   border: none !important;
 } */
+
+

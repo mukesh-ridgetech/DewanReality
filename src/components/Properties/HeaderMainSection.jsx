@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../../public/images/logo.png";
 import Overvies from "./Overvies";
 import Description from "./Description";
@@ -9,15 +9,64 @@ import FloorPlan from "./FloorPlan";
 import { Form, Input, Button, Select, Modal, message } from 'antd';
 import axios from 'axios';
 import { baseUrl } from "../helper/Helper";
+import PropertyList from "./PropertyList";
 
 const { Option } = Select;
-const HeaderMainSection = ({data,id}) => {
+const HeaderMainSection = ({data,id,LocationName}) => {
 
 
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+ const [data1,setSearchData] = useState();
+  
 
+
+  console.log("data is now filter",data1);
+
+  useEffect(()=>{
+    HandleSearch()
+  },[])
+  const HandleSearch = async()=>{
+    try {
+
+
+           const query = new URLSearchParams();
+             if(LocationName){
+               // propertiesType
+               query.append("locationName", LocationName);
+             }
+
+             const response = await axios.get(
+               `${baseUrl}/api/properties/filter?${ query.toString() }`
+             );
+             console.log(response.data);
+
+             if(response.data){
+              // setSearching(true);
+              let filteredData = response?.data?.filter(item => item.propertiesType === 'sell');
+              
+              if (filteredData.length > 3) {
+                const a  = filteredData.slice(0, 4);
+                setSearchData(a)
+              }
+
+              else {
+                setSearchData(filteredData)
+              }
+              
+             }
+   
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+  
+  console.log("LocationName",LocationName)
   // Handle modal visibility
   const showModal = () => setIsModalOpen(true);
   const handleCancel = () => setIsModalOpen(false);
@@ -64,13 +113,16 @@ const HeaderMainSection = ({data,id}) => {
               <Overvies overview={data?.overview}/>
               <Description description={data?.description}/>
               <Amenties amenities={data?.amenities}/>
-              <FloorPlan floortypes={data?.floortypes} camelliasImage={data?.camelliasImage}/>
+              <FloorPlan floortypes={data?.floortypes} camelliasImage={data?.camelliasImage} data={data}/>
               < Map/>
               <Esential neighbourhood={data?.neighbourhood}/>
         </div>
 
 
         <div className="Header-main-section-container-right">
+
+
+          <div className="Header-main-section-container-similar" style={{border:"1px solid black"}}>
           <div className="Header-main-section-container-right-image">
             <img src={logo} alt="" />
           </div>
@@ -90,11 +142,20 @@ const HeaderMainSection = ({data,id}) => {
               </svg>
               Schedule site Visit
             </button>
+
+            
           </div>
           <div className="Header-main-section-container-right-button-2">
             <button onClick={handleScrollToBottom} style={{cursor:"pointer"}}>Request a callback</button>
           </div>
+            
+          <PropertyList properties={data1} />
+          </div>
+          
+             
+          
         </div>
+        
       </div>
 
 

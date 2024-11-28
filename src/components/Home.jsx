@@ -13,6 +13,7 @@ import '../App.css'
 import {message} from "antd"
 import axios from 'axios'
 import { baseUrl } from './helper/Helper'
+import Test from './Test'
 const Home = () => {
 
   const [testinomial,setTestinomial] = useState();
@@ -116,7 +117,7 @@ const Home = () => {
   
   return (
     <div>
-      
+      {/* <Test/> */}
       <Header locations={locations} selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation}/>
      <Navbar/>
         <SearchBar  locations={locations} selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation}/>

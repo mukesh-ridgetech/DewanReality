@@ -2,7 +2,7 @@ import React from "react";
 import Builder1 from "../../../public/images/b1-1.png";
 import Builder2 from "../../../public/images/b2-2.png";
 import { baseUrl } from "../helper/Helper";
-const ImageSection = ({images}) => {
+const ImageSection = ({images,data}) => {
 
   const fullUrls = images?.map(path => `${baseUrl}${path}`);
   return (
@@ -25,7 +25,11 @@ const ImageSection = ({images}) => {
                   return(
                     <>
                 <div className="Image-container-right-item">
-                <img src={item} alt="" />
+                  {
+                    console.log("item",item)
+                  }
+                  
+                 <img src={item} alt="" />
               </div>
                     </>
                   )
@@ -51,10 +55,20 @@ const ImageSection = ({images}) => {
         </div>
 
          <div className="Image-footer-container">
-              <div className="Image-footer-container-text"><h1>3BHK</h1></div>
+
+          {
+            data?.tag?.map((item)=>{
+               return(
+                <>
+                  <div className="Image-footer-container-text"><h1>{item?.value}</h1></div>
+                </>
+               )
+            })
+          }
+              {/* <div className="Image-footer-container-text"><h1>3BHK</h1></div>
               <div className="Image-footer-container-text"> <h1>Apartment</h1></div>
               <div className="Image-footer-container-text"> <h1>Fully Furnished</h1></div>
-              <div className="Image-footer-container-text"><h1>20+ Amenities</h1></div>
+              <div className="Image-footer-container-text"><h1>20+ Amenities</h1></div> */}
          </div>
       </div>
     </>

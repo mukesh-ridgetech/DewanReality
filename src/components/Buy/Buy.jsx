@@ -58,6 +58,12 @@ const Buy = () => {
 }
 
 
+useEffect(()=>{
+
+  if(id !=='buy')
+  HandleSearch()
+},[searching])
+
 
 const filterData = async()=>{
      try {
@@ -75,6 +81,8 @@ const filterData = async()=>{
 }
 
   useEffect(()=>{
+
+
     fetchPropeties();
     filterData()
   },[])

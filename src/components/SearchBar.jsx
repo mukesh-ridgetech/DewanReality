@@ -23,12 +23,12 @@ const SearchBar = ({locations,selectedLocation,setSelectedLocation}) => {
         <div className="background-image">
           <div className="seach-bar">
             <div className="seach-bar-heading">
-              <div>
+              <div className="search-bar-h1">
                 <h1>Deals In </h1>
               </div>
 
 
-             <div style={{width:"200px"}} className="text-crouser-conatainer">
+             {/* <div style={{width:"200px"}} className="text-crouser-conatainer">
               <div className="text-carousel">
 
                 <h2>
@@ -45,8 +45,10 @@ const SearchBar = ({locations,selectedLocation,setSelectedLocation}) => {
                 </h2>
                
               </div>
-               </div>
-              <div> <h1>Properties</h1></div>
+               </div> */}
+
+                <div className="search-bar-h1"><h1 style={{color:"blue"}}>Residential</h1> </div>
+              <div className="search-bar-h1"> <h1>Properties</h1></div>
             </div>
 
             <div>

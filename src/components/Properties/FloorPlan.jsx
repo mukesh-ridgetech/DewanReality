@@ -1,7 +1,7 @@
 import React from "react";
 // import floor from "../../../public/images/floor.png";
 import { baseUrl } from "../helper/Helper";
-const FloorPlan = ({ floortypes,camelliasImage }) => {
+const FloorPlan = ({ floortypes,camelliasImage ,data}) => {
   return (
     <>
       <div className="floor-container" id="FloorPlan">
@@ -10,7 +10,7 @@ const FloorPlan = ({ floortypes,camelliasImage }) => {
         </div>
         <div className="floor-container-right">
           <div className="floor-container-right-head">
-            <h1>The Camellias</h1>
+            <h1 style={{textTransform:"capitalize"}}>{data?.propertiesName}</h1>
           </div>
           <div className="floor-container-right-header">
             <div className="floor-container-right-header-1">

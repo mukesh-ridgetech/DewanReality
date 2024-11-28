@@ -1,15 +1,18 @@
 import React from "react";
 import "../../style/Properties/Prop.css";
 import f1 from '../../../public/images/f1.png'
+import { baseUrl } from "../helper/Helper";
 
-const BuilderIcon = () => {
+const BuilderIcon = ({data}) => {
+
+  console.log("data",data);
   return (
     <>
       <div className="container1">
         <div className="Buider-icon-container">
           <div className="Buider-icon-container-left">
-            <h1>DLF The Camellias</h1>
-            <h5>
+            <h1>{data?.builder?.name}</h1>
+            <h5 style={{textTransform:"capitalize"}}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -22,11 +25,11 @@ const BuilderIcon = () => {
                   fill="#0041D9"
                 />
               </svg>
-              Sector 42, Golf Course Road, Gurgram
+              {data?.location?.sector} ,{data?.location?.city}
             </h5>
           </div>
           <div className="Buider-icon-container-right">
-               <img src={f1} alt="" />
+               <img src={`${baseUrl}${data?.builder?.logo}`} alt="" />
           </div>
         </div>
       </div>

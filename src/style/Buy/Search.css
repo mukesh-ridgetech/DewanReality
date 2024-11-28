@@ -108,6 +108,8 @@
       font-size: 14px;
       padding: 8px;
     }
+
+    
   }
   
 
@@ -121,6 +123,7 @@
   padding-left: 5%;
   padding-top: 20px;
   padding-bottom: 20px;
+  
 }
 
 .property-list-wrapper-heading h1{
@@ -157,6 +160,22 @@ padding: 0%;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+  }
+
+  .property-card1 {
+    width: 90%; /* Two cards per row */
+    margin-bottom: 20px; /* Space between rows */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow-y: hidden; /* Ensure content doesn't overflow the card */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    margin: auto;
+    
   }
 
   
@@ -369,6 +388,10 @@ line-height: 24px; /* 150% */
         height: auto;
         overflow-y: scroll;
       }
+
+      #map-container{
+        width: 100%;
+      }
   }
   
 
@@ -387,3 +410,16 @@ line-height: 24px; /* 150% */
     width: 100% !important;
     height: 100% !important;
   }
+
+  .property-list-container1{
+    width: 90%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    margin-top: 30%;
+  }
+
+  /* .property-card1{
+    width: 90%;
+    margin: auto;
+  } */

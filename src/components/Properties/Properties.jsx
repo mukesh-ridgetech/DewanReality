@@ -23,6 +23,8 @@ const Properties = () => {
   const[message1,setMessage] = useState();
 
 
+  const LocationName = data?.location?.city;
+
   const handleFormSubmit= async(e)=>{
     e.preventDefault();
      try {
@@ -111,10 +113,10 @@ const Properties = () => {
   return (
     <div>
         <PropNav/>
-        <BuilderIcon/>
-        <ImageSection images={data?.images}/>
+        <BuilderIcon  data={data}/>
+        <ImageSection images={data?.images} data={data}/>
        <ProHeader/>
-       <HeaderMainSection data={data} id={id}/>
+       <HeaderMainSection data={data} id={id} LocationName={LocationName}/>
        <DontMiss/>
        <A  testinomial={testinomial}/>
        <Footer name={name} setName={setName} phone={phone} email={email} setPhone={setPhone} setEmail={setEmail} message={message1} setMessage={setMessage} handleFormSubmit={handleFormSubmit}/>

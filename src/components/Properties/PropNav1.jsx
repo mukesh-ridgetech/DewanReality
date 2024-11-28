@@ -8,7 +8,7 @@ import logo from '../../../public/images/logo.png'
 const Navbar = () => {
 
   // const [active, setActive] = useState("Buy");
-  const [active, setActive] = useState("buy");
+  const [active, setActive] = useState("rent");
   const handleActive = (item) => {
     setActive(item);
   };
@@ -20,8 +20,8 @@ const Navbar = () => {
     <div className='container2'>  
     <div className="navbar1">
       <div className="nav-left1">
-        <Link to="/buy/buy" className={` ${active === "buy" ? "active" : ""}`}>Buy</Link>
-        <Link to="/rent/rent" >Rent</Link>
+        <Link to="/buy/buy" >Buy</Link>
+        <Link to="/rent/rent" className={` ${active === "rent" ? "active" : ""}`}>Rent</Link>
         <Link to="/upcomming">Upcoming Projects</Link>
       </div>
 
