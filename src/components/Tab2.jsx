@@ -19,10 +19,10 @@ import { baseUrl } from "./helper/Helper";
 import { useNavigate } from "react-router-dom";
 // import { Slider } from 'antd';
 
-const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
+const Tab2 = ({ locations, selectedLocation, setSelectedLocation }) => {
   const [selectedTab, setSelectedTab] = useState("All");
 
-  const navigate= useNavigate()
+  const navigate = useNavigate();
   // const [activeTab, setActiveTab] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -36,26 +36,22 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
 
   const [selectedSector, setSelectedSector] = useState("");
   const [selectProperties, setselectProperties] = useState("");
-  const [selectPrice,setSelectedPrice] = useState();
-  const [searchUrl,setSearchUrl] = useState();
-  const [advanceFilter,setAdvanceFilter] = useState(false)
-  const[tabchange,setTabchange] = useState();
+  const [selectPrice, setSelectedPrice] = useState();
+  const [searchUrl, setSearchUrl] = useState();
+  const [advanceFilter, setAdvanceFilter] = useState(false);
+  const [tabchange, setTabchange] = useState();
   const [inputValue, setInputValue] = useState("");
-
-
- 
 
   const handleTabClick1 = (tab) => {
     // console.log("Clicked tab: ", tab);
-    setTabchange(tab)
+    setTabchange(tab);
     if (selectedTab !== tab) {
       setSelectedTab(tab);
     }
     // console.log("selectedTab",selectedTab);
   };
 
- console.log("selectedTab",selectedTab);
-
+  console.log("selectedTab", selectedTab);
 
   const handleChange = (event) => {
     setSelectedSector(event.target.value); // Store the selected value in state
@@ -65,11 +61,9 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
     setselectProperties(event.target.value); // Store the selected value in state
   };
 
-
   const handlePrice = (event) => {
     setSelectedPrice(event.target.value); // Store the selected value in state
   };
-
 
   // console.log("selectedTab",selectedTab);
   // Function to handle checkbox selection
@@ -99,29 +93,26 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
   useEffect(() => {
     fetchLocagtion();
   }, []);
-  
 
-
-  const handleSelectionChange = (e)=>{
-    setSelectedLocation(e.target.value); 
-  }
+  const handleSelectionChange = (e) => {
+    setSelectedLocation(e.target.value);
+  };
 
   const fetchLocagtion = async () => {
     try {
       const response = await axios.get(`${baseUrl}/api/locations/getLoacation`);
       console.log(response.data.locations);
       if (response.data) {
-
         const data = response.data.locations;
 
         const formattedData = data.map((item) => ({
-            // _id: item._id,
-            // city: item.city,
-            ...item,
-            sector: item.sector.replace(/[\s-]/g, "_"), // Replace spaces and hyphens with underscores
-          }));
+          // _id: item._id,
+          // city: item.city,
+          ...item,
+          sector: item.sector.replace(/[\s-]/g, "_"), // Replace spaces and hyphens with underscores
+        }));
 
-          console.log("formattedData",formattedData);
+        console.log("formattedData", formattedData);
         setLocation(formattedData);
       }
     } catch (error) {
@@ -161,74 +152,71 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
     setIsModalOpen(false);
   };
 
-  const HandleSearch = async()=>{
-         try {
+  const HandleSearch = async () => {
+    try {
+      if (advanceFilter) {
+        // const response = await axios.get(
+        //     `${baseUrl}/api/properties/filter?${searchUrl}`
+        //   );
+        //   console.log(response.data);
 
-            if(advanceFilter){
-                // const response = await axios.get(
-                //     `${baseUrl}/api/properties/filter?${searchUrl}`
-                //   );
-                //   console.log(response.data);
+        // if(response.data){
+        setAdvanceFilter(false);
+        setSearchUrl("");
+        setselectProperties("");
 
-                  // if(response.data){
-                    setAdvanceFilter(false);
-                    setSearchUrl("");
-                    setselectProperties("");
+        if (selectedTab === "For Rent") {
+          navigate(`/buy/${searchUrl}`, { state: { selectedLocation } });
+        } else if (selectedTab === "For Sale") {
+          navigate(`/rent/${searchUrl}`, { state: { selectedLocation } });
+        }
+        // }
+      } else {
+        const query = new URLSearchParams();
 
-                    if(selectedTab ==='For Rent'){
-                      navigate(`/buy/${searchUrl}`)
-                    }
-                    else if(selectedTab ==='For Sale'){
-                      navigate(`/rent/${searchUrl}`)
-                    }
-                  // }
-            }else{
-                const query = new URLSearchParams();
+        if (selectProperties) {
+          query.append("propertiesCategory", selectProperties);
+        }
 
-                if(selectProperties){
-                    query.append("propertiesCategory", selectProperties);
-                  }
+        if (inputValue) {
+          query.append("searchQuery", inputValue);
+        }
 
-                  if(inputValue){
-                    query.append("searchQuery", inputValue);
-                  }
-                     
-                  if(selectedLocation){
-                    query.append("locationName", selectedLocation);
-                  }
+        if (selectedLocation) {
+          query.append("locationName", selectedLocation);
+        }
 
-                  if(selectPrice){
-                    query.append("minPrice", selectPrice);
-                  }
+        if (selectPrice) {
+          query.append("minPrice", selectPrice);
+        }
 
-                  if(selectedTab ==='For Rent'){
-                    // propertiesType
-                    query.append("propertiesType", 'rent');
-                  }
-                  else if(selectedTab ==='For Sale'){
-                    query.append("propertiesType", 'sell');
-                  }
-                  // const response = await axios.get(
-                  //   `${baseUrl}/api/properties/filter?${ query.toString() }`
-                  // );
-                  // console.log(response.data);
+        if (selectedTab === "For Rent") {
+          // propertiesType
+          query.append("propertiesType", "rent");
+        } else if (selectedTab === "For Sale") {
+          query.append("propertiesType", "sell");
+        }
+        // const response = await axios.get(
+        //   `${baseUrl}/api/properties/filter?${ query.toString() }`
+        // );
+        // console.log(response.data);
 
-                  // if(response.data){
-                    setselectProperties("");
-                    setSelectedSector("");
-                    if(selectedTab ==='For Rent'){
-                      navigate(`/rent/${query.toString()}`)
-                    }
-                    else if(selectedTab ==='For Sale'){
-                      navigate(`/buy/${query.toString()}`)
-                    }
-                  // }
-            }
-            
-         } catch (error) {
-             console.log(error);
-         }
-  }
+        // if(response.data){
+        setselectProperties("");
+        setSelectedSector("");
+        if (selectedTab === "For Rent") {
+          navigate(`/rent/${query.toString()}`, {
+            state: { selectedLocation },
+          });
+        } else if (selectedTab === "For Sale") {
+          navigate(`/buy/${query.toString()}`, { state: { selectedLocation } });
+        }
+        // }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleSubmit = async (values) => {
     console.log("Filter Values:", values);
@@ -246,23 +234,21 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
     // maxAge,
 
     try {
-        
       const query = new URLSearchParams();
-      
 
-      if(values?.amenities){
-         const result = values?.amenities?.map(item => item.replace(/ /g, "-")).join("_");
-         query.append("amenitiesName", result);
+      if (values?.amenities) {
+        const result = values?.amenities
+          ?.map((item) => item.replace(/ /g, "-"))
+          .join("_");
+        query.append("amenitiesName", result);
       }
 
-      if(selectProperties){
+      if (selectProperties) {
         query.append("propertiesCategory", selectProperties);
-      }
-      else if (values.propertyCategory) {
+      } else if (values.propertyCategory) {
         query.append("propertiesCategory", values.propertyCategory);
       }
-     
-      
+
       if (values.propertyType) {
         query.append("propertiesType", values.propertyType);
       }
@@ -282,46 +268,41 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
       if (values.propertyAge) {
         query.append("maxAge", values.propertyAge);
       }
-     
+
       // "For Rent", "For Sale"
-      if(selectedTab ==='For Rent'){
+      if (selectedTab === "For Rent") {
         // propertiesType
-        query.append("propertiesType", 'rent');
-      }
-      else if(selectedTab ==='For Sale'){
-        query.append("propertiesType", 'sell');
+        query.append("propertiesType", "rent");
+      } else if (selectedTab === "For Sale") {
+        query.append("propertiesType", "sell");
       }
 
       if (values.priceRange[1]) {
         query.append("maxPrice", values.priceRange[1]);
       }
 
-      if(selectedLocation){
+      if (selectedLocation) {
         query.append("locationName", selectedLocation);
       }
 
-      if(inputValue){
+      if (inputValue) {
         query.append("searchQuery", inputValue);
       }
-     
 
-      setSearchUrl(query.toString())
+      setSearchUrl(query.toString());
       form.resetFields();
-      setAdvanceFilter(true)
+      setAdvanceFilter(true);
       setIsModalOpen(false);
-    //   const response = await axios.get(
-    //     `${baseUrl}/api/properties/filter?${query.toString()}`
-    //   );
-    //   console.log(response.data);
+      //   const response = await axios.get(
+      //     `${baseUrl}/api/properties/filter?${query.toString()}`
+      //   );
+      //   console.log(response.data);
 
-     
       //    console.log("query.toString()",query.toString())
     } catch (error) {
       console.log(error);
     }
   };
-
-  
 
   // Variable to store the input value
 
@@ -330,58 +311,55 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
     setInputValue(formattedValue); // Update the variable with the formatted value
   };
 
-  console.log("inputValue",inputValue);
+  console.log("inputValue", inputValue);
 
   return (
     <div className="search-container">
       {/* Tabs Section */}
       <div className="tabs">
-      {["All", "For Rent", "For Sale"].map((tab) => (
-        <div
-          key={tab}
-          className={`tab ${selectedTab === tab ? "active" : ""}`}
-          onClick={() => handleTabClick1(tab)}
-        >
-          {tab}
-        </div>
-      ))}
+        {["All", "For Rent", "For Sale"].map((tab) => (
+          <div
+            key={tab}
+            className={`tab ${selectedTab === tab ? "active" : ""}`}
+            onClick={() => handleTabClick1(tab)}
+          >
+            {tab}
+          </div>
+        ))}
       </div>
 
       {/* Search Inputs Section */}
-       <div className="search-bar">
+      <div className="search-bar">
         <div className="input-group ">
-        <select
-                // placeholder="Select a location"
-                value={selectedLocation}
-                onChange={handleSelectionChange}
-                // style={{ width: "130px" ,border:"none",backgroundColor:"transparent",fontWeight:"bold",fontSize:"1.2rem"}}
-
-           >
-                {locations.map((location) => (
-                    <option key={location._id} value={location.city}>
-                        {location.city}
-                    </option>
-                ))}
-            </select>
+          <select
+            // placeholder="Select a location"
+            value={selectedLocation}
+            onChange={handleSelectionChange}
+            // style={{ width: "130px" ,border:"none",backgroundColor:"transparent",fontWeight:"bold",fontSize:"1.2rem"}}
+          >
+            {locations.map((location) => (
+              <option key={location._id} value={location.city}>
+                {location.city}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="input-group large-input placeholder-style">
-      <input
-        type="text"
-        placeholder="Enter an address, neighbourhood, city, or PIN code"
-        value={inputValue} // Bind the input value to the state
-        onChange={handleInputChange} // Update state on change
-      />
-     
-    </div>
+          <input
+            type="text"
+            placeholder="Enter an address, neighbourhood, city, or PIN code"
+            value={inputValue} // Bind the input value to the state
+            onChange={handleInputChange} // Update state on change
+          />
+        </div>
 
         <div className="input-group disabled-item">
           <select className="palceholder-style" onChange={handleProperties}>
-
-          {/* <Radio value="Residential">Residential</Radio>
+            {/* <Radio value="Residential">Residential</Radio>
               <Radio value="Commercial">Commercial</Radio>
               <Radio value="Rental">Rental</Radio> */}
-            <option value="" >Select Properties</option>
+            <option value="">Select Properties</option>
             <option value="Residential">Residential</option>
             <option value="Commercial">Commercial</option>
             <option value="Rental">Rental</option>
@@ -389,8 +367,8 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
         </div>
 
         <div className="input-group disabled-item">
-          <select className="palceholder-style"  onChange={handlePrice}>
-            <option value="" >Select Price</option>
+          <select className="palceholder-style" onChange={handlePrice}>
+            <option value="">Select Price</option>
             <option value="10000">₹ 10000</option>
             <option value="200000">₹ 200000</option>
             <option value="30000">₹ 300000</option>
@@ -433,8 +411,8 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
           layout="vertical"
           onFinish={handleSubmit}
           initialValues={{
-            priceRange: [0,0],
-            areaRange: [0,0],
+            priceRange: [0, 0],
+            areaRange: [0, 0],
           }}
         >
           {/* Tabs */}
@@ -542,7 +520,7 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
           </Form.Item>
 
           {/* Floor */}
-          <Form.Item label="Floor" name="floor">
+          {/* <Form.Item label="Floor" name="floor">
             <Radio.Group>
               <Radio value="Ground">Ground</Radio>
               <Radio value="1 to 3">1 to 3</Radio>
@@ -551,7 +529,7 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
               <Radio value="10 & above">10 & above</Radio>
               <Radio value="Custom">Custom</Radio>
             </Radio.Group>
-          </Form.Item>
+          </Form.Item>  */}
 
           {/* Other Amenities */}
           <Form.Item label="Other Amenities" name="amenities">
@@ -567,8 +545,7 @@ const Tab2 = ({locations,selectedLocation,setSelectedLocation}) => {
                 "Rain Water Harvesting",
                 "Internet Provider",
                 "Children’s Play Area",
-                "Gym"
-
+                "Gym",
               ].map((amenity) => (
                 <Checkbox key={amenity} value={amenity}>
                   {amenity}
